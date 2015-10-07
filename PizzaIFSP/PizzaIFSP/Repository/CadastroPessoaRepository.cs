@@ -12,7 +12,7 @@ namespace PizzaIFSP.Repository
     {
         private CadastroPessoaContext context = new CadastroPessoaContext();
 
-        public void Cadastra(Pessoa pessoa)
+        public void Cadastra(CadastoPessoa pessoa)
         {
             context.Pessoas.Add(pessoa);
         }
@@ -22,14 +22,14 @@ namespace PizzaIFSP.Repository
             context.SaveChanges();
         }
 
-        public Pessoa Consulta(int IdCliente)
+        public CadastoPessoa Consulta(int IdCliente)
         {
             return context.Pessoas.Find(IdCliente);
         }
 
         public void Exclui(int IdCliente)
         {
-            Pessoa pessoa = Consulta(IdCliente);
+            CadastoPessoa pessoa = Consulta(IdCliente);
             context.Pessoas.Remove(pessoa);
         }
     }

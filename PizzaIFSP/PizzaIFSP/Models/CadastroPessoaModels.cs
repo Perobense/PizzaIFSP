@@ -11,8 +11,11 @@ using System.Web.Security;
 
 namespace PizzaIFSP.Models
 {
-    public class Pessoa
+    public class CadastoPessoa
     {
+        [Key]
+        public int pkPessoa { get; set; }
+
         [Required]
         [Display(Name = "Código do Cliente")]
         public int IdCliente { get; set; }
@@ -72,6 +75,6 @@ namespace PizzaIFSP.Models
 
         }
 
-        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<CadastoPessoa> Pessoas { get; set; }
     }
 }

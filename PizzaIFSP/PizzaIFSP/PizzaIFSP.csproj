@@ -162,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CadastroPessoaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,6 +171,9 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CadastroPessoaModels.cs" />
     <Compile Include="Models\CadastroProdutoModels.cs" />
+    <Compile Include="Models\PizzaIFSPContext.cs" />
+    <Compile Include="PizzaIFSPContext.cs" />
+    <Compile Include="PizzariaIFSPContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CadastroPessoaRepository.cs" />
   </ItemGroup>
@@ -284,6 +288,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\CadastroPessoa\Index.cshtml" />
+    <Content Include="Views\CadastroPessoa\Details.cshtml" />
+    <Content Include="Views\CadastroPessoa\Create.cshtml" />
+    <Content Include="Views\CadastroPessoa\Edit.cshtml" />
+    <Content Include="Views\CadastroPessoa\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
