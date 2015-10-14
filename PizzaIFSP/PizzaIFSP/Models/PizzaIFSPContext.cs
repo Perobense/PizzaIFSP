@@ -18,5 +18,13 @@ namespace PizzaIFSP.Models
         }
 
         public DbSet<CadastoPessoa> CadastoPessoas { get; set; }
+
+        public DbSet<CadastroProduto> CadastroProdutoes { get; set; }
+
+        public DbSet<CadastoPedido> CadastoPedidoes { get; set; }
+
+        public DbSet<RelacaoProdutoPedido> RelacaoProdutoPedidoes { get; set; }
+
+        public DbSet<CadastoPagamento> CadastoPagamentoes { get; set; }
     }
 }

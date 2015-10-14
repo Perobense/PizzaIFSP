@@ -162,16 +162,23 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CadastraPagamentoController.cs" />
+    <Compile Include="Controllers\CadastroPedidoController.cs" />
     <Compile Include="Controllers\CadastroPessoaController.cs" />
+    <Compile Include="Controllers\CadastroProdutoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RelacaoProdutoPedidoController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CadastroPagamento.cs" />
+    <Compile Include="Models\CadastroPedidoModels.cs" />
     <Compile Include="Models\CadastroPessoaModels.cs" />
     <Compile Include="Models\CadastroProdutoModels.cs" />
     <Compile Include="Models\PizzaIFSPContext.cs" />
+    <Compile Include="Models\RelacaoProdutoPedido.cs" />
     <Compile Include="PizzaIFSPContext.cs" />
     <Compile Include="PizzariaIFSPContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

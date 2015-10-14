@@ -11,8 +11,11 @@ using System.Web.Security;
 
 namespace PizzaIFSP.Models
 {
-    public class CadastrarProduto
+    public class CadastroProduto
     {
+        [Key]
+        public int pkProduto { get; set; }
+
         [Required]
         [Display(Name = "Código do Produto")]
         public int IdProduto { get; set; }
@@ -30,5 +33,20 @@ namespace PizzaIFSP.Models
         [Required]
         [Display(Name = "Quantidade")]
         public int Quantidade { get; set; }
+    }
+
+    public class CadastroProdutoContext : DbContext
+    {
+        public CadastroProdutoContext()
+            : base("name=CadatroProdutoContext")
+        {
+
+            Database.Connection.ConnectionString =
+
+                @"Data Source=LAB03-08;Initial Catalog=Produtos;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+
+        }
+
+        public DbSet<CadastroProduto> Produtos { get; set; }
     }
 }
