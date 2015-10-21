@@ -17,15 +17,15 @@ namespace PizzaIFSP.Controllers
         private PizzaIFSPContext db = new PizzaIFSPContext();
 
         // GET api/CadastraPagamento
-        public IEnumerable<CadastoPagamento> GetCadastoPagamentoes()
+        public IEnumerable<CadastroPagamento> GetCadastoPagamentoes()
         {
             return db.CadastoPagamentoes.AsEnumerable();
         }
 
         // GET api/CadastraPagamento/5
-        public CadastoPagamento GetCadastoPagamento(int id)
+        public CadastroPagamento GetCadastoPagamento(int id)
         {
-            CadastoPagamento cadastopagamento = db.CadastoPagamentoes.Find(id);
+            CadastroPagamento cadastopagamento = db.CadastoPagamentoes.Find(id);
             if (cadastopagamento == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -35,14 +35,14 @@ namespace PizzaIFSP.Controllers
         }
 
         // PUT api/CadastraPagamento/5
-        public HttpResponseMessage PutCadastoPagamento(int id, CadastoPagamento cadastopagamento)
+        public HttpResponseMessage PutCadastoPagamento(int id, CadastroPagamento cadastopagamento)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != cadastopagamento.pkPagamento)
+            if (id != cadastopagamento.IdPagamento)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -62,7 +62,7 @@ namespace PizzaIFSP.Controllers
         }
 
         // POST api/CadastraPagamento
-        public HttpResponseMessage PostCadastoPagamento(CadastoPagamento cadastopagamento)
+        public HttpResponseMessage PostCadastoPagamento(CadastroPagamento cadastopagamento)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace PizzaIFSP.Controllers
                 db.SaveChanges();
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, cadastopagamento);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = cadastopagamento.pkPagamento }));
+                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = cadastopagamento.IdPagamento }));
                 return response;
             }
             else
@@ -82,7 +82,7 @@ namespace PizzaIFSP.Controllers
         // DELETE api/CadastraPagamento/5
         public HttpResponseMessage DeleteCadastoPagamento(int id)
         {
-            CadastoPagamento cadastopagamento = db.CadastoPagamentoes.Find(id);
+            CadastroPagamento cadastopagamento = db.CadastoPagamentoes.Find(id);
             if (cadastopagamento == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);

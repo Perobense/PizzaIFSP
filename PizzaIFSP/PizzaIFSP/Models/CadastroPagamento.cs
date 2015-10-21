@@ -11,10 +11,11 @@ using System.Web.Security;
 
 namespace PizzaIFSP.Models
 {
-    public class CadastoPagamento
+    public class CadastroPagamento
     {
         [Key]
-        public int pkPagamento { get; set; }
+        public int IdPagamento { get; set; }
+
 
         [Required]
         [Display(Name = "Código do Cliente")]
@@ -57,6 +58,6 @@ namespace PizzaIFSP.Models
 
         }
 
-        public DbSet<CadastoPagamento> Pagamentos { get; set; }
+        public DbSet<CadastroPagamento> Pagamentos { get; set; }
     }
 }

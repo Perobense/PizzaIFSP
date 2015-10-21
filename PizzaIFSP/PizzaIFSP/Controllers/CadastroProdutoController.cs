@@ -6,9 +6,11 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Mvc;
 using System.Web;
 using System.Web.Http;
 using PizzaIFSP.Models;
+
 
 namespace PizzaIFSP.Controllers
 {
@@ -16,16 +18,17 @@ namespace PizzaIFSP.Controllers
     {
         private PizzaIFSPContext db = new PizzaIFSPContext();
 
+
         // GET api/CadastroProduto
         public IEnumerable<CadastroProduto> GetCadastroProdutoes()
         {
-            return db.CadastroProdutoes.AsEnumerable();
+            return db.CadastroProdutos.AsEnumerable();
         }
 
         // GET api/CadastroProduto/5
         public CadastroProduto GetCadastroProduto(int id)
         {
-            CadastroProduto cadastroproduto = db.CadastroProdutoes.Find(id);
+            CadastroProduto cadastroproduto = db.CadastroProdutos.Find(id);
             if (cadastroproduto == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -66,7 +69,7 @@ namespace PizzaIFSP.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CadastroProdutoes.Add(cadastroproduto);
+                db.CadastroProdutos.Add(cadastroproduto);
                 db.SaveChanges();
 
                 HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, cadastroproduto);
@@ -82,13 +85,13 @@ namespace PizzaIFSP.Controllers
         // DELETE api/CadastroProduto/5
         public HttpResponseMessage DeleteCadastroProduto(int id)
         {
-            CadastroProduto cadastroproduto = db.CadastroProdutoes.Find(id);
+            CadastroProduto cadastroproduto = db.CadastroProdutos.Find(id);
             if (cadastroproduto == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
 
-            db.CadastroProdutoes.Remove(cadastroproduto);
+            db.CadastroProdutos.Remove(cadastroproduto);
 
             try
             {

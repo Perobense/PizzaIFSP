@@ -21,6 +21,7 @@ namespace PizzaIFSP.Controllers
             return View(db.CadastoPessoas.ToList());
         }
 
+
         //
         // GET: /CadastroPessoa/Details/5
 

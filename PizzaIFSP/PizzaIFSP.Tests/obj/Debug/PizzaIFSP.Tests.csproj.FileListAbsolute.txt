@@ -94,3 +94,6 @@ C:\Users\Aluno\Source\Repos\PizzaIFSP\PizzaIFSP\PizzaIFSP.Tests\bin\Debug\DotNet
 C:\Users\Aluno\Source\Repos\PizzaIFSP\PizzaIFSP\PizzaIFSP.Tests\obj\Debug\PizzaIFSP.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Aluno\Source\Repos\PizzaIFSP\PizzaIFSP\PizzaIFSP.Tests\obj\Debug\PizzaIFSP.Tests.dll
 C:\Users\Aluno\Source\Repos\PizzaIFSP\PizzaIFSP\PizzaIFSP.Tests\obj\Debug\PizzaIFSP.Tests.pdb
+C:\Users\Aluno\Desktop\PizzaIFSP\PizzaIFSP\PizzaIFSP.Tests\obj\Debug\PizzaIFSP.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Aluno\Desktop\PizzaIFSP\PizzaIFSP\PizzaIFSP.Tests\obj\Debug\PizzaIFSP.Tests.dll
+C:\Users\Aluno\Desktop\PizzaIFSP\PizzaIFSP\PizzaIFSP.Tests\obj\Debug\PizzaIFSP.Tests.pdb
