@@ -9,9 +9,11 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using PizzaIFSP.Models;
+using PizzaIFSP.Filters;
 
 namespace PizzaIFSP.Controllers
 {
+    [AutorizacaoDeAcesso]
     public class CadastraPagamentoController : ApiController
     {
         private PizzaIFSPContext db = new PizzaIFSPContext();

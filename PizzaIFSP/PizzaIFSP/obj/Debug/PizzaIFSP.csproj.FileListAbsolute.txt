@@ -195,3 +195,6 @@ C:\Users\Aluno\Desktop\PizzaIFSP\PizzaIFSP\PizzaIFSP\bin\DotNetOpenAuth.OpenId.R
 C:\Users\Aluno\Desktop\PizzaIFSP\PizzaIFSP\PizzaIFSP\obj\Debug\PizzaIFSP.dll
 C:\Users\Aluno\Desktop\PizzaIFSP\PizzaIFSP\PizzaIFSP\obj\Debug\PizzaIFSP.pdb
 C:\Users\Aluno\Desktop\PizzaIFSP\PizzaIFSP\PizzaIFSP\obj\Debug\PizzaIFSP.csprojResolveAssemblyReference.cache
+C:\Users\Vítor\Documents\PizzaIFSP\PizzaIFSP\PizzaIFSP\obj\Debug\PizzaIFSP.csprojResolveAssemblyReference.cache
+C:\Users\Vítor\Documents\PizzaIFSP\PizzaIFSP\PizzaIFSP\obj\Debug\PizzaIFSP.dll
+C:\Users\Vítor\Documents\PizzaIFSP\PizzaIFSP\PizzaIFSP\obj\Debug\PizzaIFSP.pdb
