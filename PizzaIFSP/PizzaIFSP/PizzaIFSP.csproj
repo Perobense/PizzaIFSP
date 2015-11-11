@@ -179,6 +179,7 @@
     <Compile Include="Models\CadastroPedidoModels.cs" />
     <Compile Include="Models\CadastroPessoaModels.cs" />
     <Compile Include="Models\CadastroProdutoModels.cs" />
+    <Compile Include="Models\ClienteViewModel.cs" />
     <Compile Include="Models\PizzaIFSPContext.cs" />
     <Compile Include="Models\RelacaoProdutoPedido.cs" />
     <Compile Include="PizzaIFSPContext.cs" />
