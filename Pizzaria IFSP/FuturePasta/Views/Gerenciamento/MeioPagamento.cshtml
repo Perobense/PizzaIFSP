@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+<head>
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Meio de Pagamento</title>
+</head>
+<body onload="CarregaInfo()">
+    <div id="Container">
+
+        <div id="Dados"></div>
+
+        <label>Nota Fiscal</label>
+        <input type="checkbox" id="NF" /><br>
+        <br>
+        <label>Troco</label><br>
+        <input type="text" id="Troco" onkeypress="return ValidaNumero(event,this)" /><br>
+        <br>
+        <label>Desconto</label><br>
+        <input type="text" id="Desconto" onkeypress="return ValidaNumero(event,this)" /><br>
+        <br>
+        <input type='button' value='Finalizar Pedido' onclick='SalvarPedidoManual()' />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type='button' value='Voltar' onclick="Voltar()" />
+    </div>
+</body>
+
+<script type="text/javascript">
+    jQuery('#Container').animate(
+        { top: "0px" },
+        { duration: 0, queue: false });
+
+    function CarregaInfo() {
+        $.ajax({
+            url: '@Url.Action("CarregaDados", "Gerenciamento")',
+            data: {},
+            success: function (data) {
+                document.getElementById("Dados").innerHTML = data
+            }
+        });
+
+    }
+
+    function SalvarPedidoManual() {
+        var Achou = ""
+        var radiosFormaPgto = document.getElementsByName('FormaPgto');
+        var FormaPgto = "";
+        for (var i = 0, length = radiosFormaPgto.length; i < length; i++) {
+            if (radiosFormaPgto[i].checked) {
+
+                FormaPgto = radiosFormaPgto[i].value;
+                Achou = "Achou"
+                break;
+            }
+        }
+        if (Achou == "Achou") {
+
+            var NotaFiscal = document.getElementById("NF").checked
+
+            var Troco = document.getElementById("Troco").value
+
+            var Desconto = document.getElementById("Desconto").value
+
+            var DadosPedido = document.getElementById("DadosP").value;
+
+            if ((Troco == "") || (Troco == null)) {
+                Troco = 0;
+            }
+            if ((Desconto == "") || (Desconto == null)) {
+                Desconto = 0;
+            }
+            $.ajax({
+                url: '@Url.Action("SalvarPedidoManual", "Gerenciamento")',
+                data: { Dados: DadosPedido, MeioPgto: FormaPgto, NotaFiscal: NotaFiscal, Troco: Troco, Desconto: Desconto },
+                success: function (data) {
+                    alert("Numero do Pedido: "+data)
+                    document.location.href = "PedidoManual"
+                }
+            });
+            }
+            else {
+                alert("selecionar uma Forma de Pagamento")
+            }
+        }
+        function ValidaNumero(tecla, campo) {
+
+            var charCode = (tecla.which) ? tecla.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+        }
+
+        function Voltar() {
+            document.location.href = "PedidoManualProduto"
+        }
+</script>

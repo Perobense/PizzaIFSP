@@ -1,0 +1,335 @@
+﻿
+@-webkit-viewport {
+    width: device-width;
+}
+
+@-moz-viewport {
+    width: device-width;
+}
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+
+.container {
+    max-width: 1128px;
+    margin: 0 auto;
+}
+
+img,
+picture,
+video,
+embed {
+    max-width: 100%;
+}
+
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.coluna {
+    width: 17.73049645390071%; /* 200px / 1128px */
+    float: left;
+    margin-right: 2.127659574468085%; /* 24px / 1128px */
+}
+
+    .coluna:last-child {
+        margin-right: 0;
+    }
+
+
+
+/* Geral */
+a:focus {
+    outline: none;
+}
+
+.clearfix:after {
+    content: '.';
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+/* Abas */
+.tabs-content {
+    background: #fff;
+}
+
+/* Menu das abas */
+.tabs-menu {
+    background: #E8E8E8;
+    border: 1px solid #ddd;
+    border-bottom: none;
+}
+
+    .tabs-menu ul {
+        list-style: none;
+    }
+
+        .tabs-menu ul li {
+            float: left;
+        }
+
+            .tabs-menu ul li a {
+                display: block;
+                padding: 10px 20px;
+                text-decoration: none;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: #000;
+            }
+
+                .tabs-menu ul li a.active-tab-menu {
+                    background: #fff;
+                    color: #000;
+                }
+
+/* Conteúdo das abas */
+.tabs {
+    display: none;
+    padding: 30px;
+}
+
+.first-tab {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.Menu {
+    list-style: none;
+    float: left;
+    width: 913px;
+    height: 30px;
+    text-align: center;
+    margin-left: 300px;
+    border-radius: 5px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.logo {
+    margin-top: -150px;
+}
+
+.Menu li {
+    font-size: xx-large;
+    font-family: Arial;
+    font-style: italic;
+    position: relative;
+    float: left;
+    margin-left: 2px;
+    border-radius: 17px 17px 17px 17px;
+    width: 150px;
+    border: 1px outset #E8E8E8;
+    height: 30px;
+    color: #000000;
+    text-align: center;
+    font-size: large;
+    background-color: #E8E8E8;
+    position: relative;
+}
+
+    .menu li a {
+        color: #333;
+        text-decoration: none;
+        padding: 5px 10px;
+        display: block;
+    }
+
+
+    .Menu li ul {
+        position: absolute;
+        top: 24px;
+        left: 0px;
+        display: none;
+        border-radius: 17px 17px 17px 17px;
+    }
+
+
+    .Menu li:hover ul, .Menu li.over ul {
+        display: block;
+    }
+
+
+.Menu .menu-list, .Menu .sub-menu {
+    list-style: none;
+}
+
+.Menu > .menu-list > li {
+    float: left;
+    position: relative;
+}
+
+
+.Menu li ul li {
+    border: 1px solid #c0c0c0;
+    margin-top: 5px;
+    display: block;
+    width: 150px;
+    height: auto;
+}
+
+.Menu ul {
+    margin-top: 6px;
+    width: auto;
+}
+
+.Menu li:hover {
+    position: relative;
+    float: left;
+    width: 150px;
+    height: auto;
+    margin-left: 2px;
+    border-radius: 17px 17px 17px 17px;
+    border: 1px outset #E8E8E8;
+    text-align: center;
+    font-size: large;
+    color: red;
+}
+
+.Menu li a {
+    text-decoration: none;
+    padding: 4px 10px;
+    display: block;
+    text-align: center;
+}
+
+
+
+/***********************************************************Inicio*******************************************************************************/
+
+.Topo {
+    margin-top: 40px;
+    height: 150px;
+    width: 100%;
+    border-radius: 1px 1px 1px 1px;
+    background-color: white;
+}
+
+.SubTopo {
+    margin-top: 0px;
+    height: 50px;
+    width: 100%;
+    background: url(Imagens/bgsubtopo.png) repeat-x;
+}
+
+.Cardapio {
+    /*
+    background: url(Imagens/CardapioMP.png) no-repeat;
+*/
+}
+
+.Footer {
+    height: 40px;
+    margin-bottom: -10px;
+}
+
+.FooterTexto {
+    margin-left: 550px;
+}
+
+
+/***********************************************************Fim*********************************************************************************/
+
+/***********************************************************Relatorio*********************************************************************************/
+.Cabecalho {
+    width: 1200px;
+    text-align: center;
+    background-color: #808080;
+    border: 1px solid #000;
+}
+
+.fdstTopo {
+width: 1200px;
+}
+
+.TopoRelatorio {
+ margin-top: 180px;
+}
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+table#tblRelatorio tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table#tblRelatorio tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table#tblRelatorio th {
+    background-color: black;
+    color: white;
+}
+
+/***********************************************************Fim - Relatorio*********************************************************************************/

@@ -1,0 +1,12 @@
+﻿/***********************************************************Pedido Manual Produto*********************************************************************************/
+.center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -675px; /*centralizando a imagem*/
+        margin-top: -90px; /*centralizando a imagem*/
+        display: none;
+        width: 1350px;
+        height: 1000px;
+    }
+/***********************************************************Fim - Pedido Manual Produto*********************************************************************************/

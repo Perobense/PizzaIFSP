@@ -1,0 +1,30 @@
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\ClassLibrary1\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

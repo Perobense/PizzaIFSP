@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "MelhorPedido";
+}
+
+<body onload="LimpaCampos();">
+<form method="post" enctype="multipart/form-data">
+    <div class="Topo">
+        <br>
+        <br>
+        <img src="../../Content/Imagens/LogoMP.png" style="margin-left: 10px; height: 65px; width: 85px; margin-top: 100px" />
+        <div class="titulo" style="font-size: 450%; margin-top: -120px; margin-left: 400px; font-family: Gigi; color: white;">Cadastro de Bebida</div>
+
+    </div>
+    <div class="SubTopo">
+        <ul class="Menu">
+            <li><a id="getuser">Cadastro</a></li>
+            <li><a id="getesf">Pedido</a></li>
+            <li><a id="teste">Produto 1</a></li>
+            <li><a id="aaaa">Produto 2</a></li>
+        </ul>
+
+    </div>
+    <br>
+    <br />
+    <div class="CadastroEsfiha" style="margin-left: 50px; width: 400px;">
+            <label>CADASTRO DE BEBIDA</label><br><br>
+        <fieldset>
+            <br><label>Nome</label><br>
+            <input type="text" name="Nome" id="Nome"  /><br>
+            <br>
+
+          <br>
+
+            <label>Valor</label><br>
+            <input type="text" name="Valor" id="Valor" maxlength="6" onkeypress='return somenteNumeroDecimal(this,event)' /><br>
+            <br>
+
+
+            <label>Tamanho</label><br>
+            <select type="text" name="Tipo" id="Tipo" />
+            <option value="0">600 ml</option>
+            <option value="1">2L</option>
+            </select><br>
+            <br>
+
+            <br>
+            <br>
+            <label>Foto: </label>
+            <input type="file" name="file" value="Selecione a imagem" />
+            <br><br>
+            <input type="submit" id="Cadastrar" name="Cadastrar" value="Cadastrar">
+        </fieldset>
+       
+        </fieldset>
+
+            @ViewBag.ret
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="Footer">
+            <div class="FooterTexto">Copyright Melhor Pedido</div>
+        </div>
+</form>
+<script language='JavaScript'>
+
+    function LimpaCampos() {
+
+        document.getElementById('Sabor').value = ""
+        document.getElementById('Ingredientes').value = ""
+        document.getElementById('Valor').value = ""
+        document.getElementById('Tipo').value = ""
+
+        var x = '@Session["SessionFornecedor"]';
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+
+    }
+
+    function somenteNumeroDecimal(objTextBox, e) {
+        var sep = 0;
+        var key = '';
+        var i = j = 0;
+        var len = len2 = 0;
+        var strCheck = '0123456789';
+        var aux = aux2 = '';
+        if (e.which) {
+            var whichCode = e.which;
+        } else {
+            var whichCode = e.keyCode;
+        }
+        if ((whichCode == 13) || (whichCode == 0) || (whichCode == 8)) return true;
+        key = String.fromCharCode(whichCode); // Valor para o código da Chave
+        if (strCheck.indexOf(key) == -1) return false; // Chave inválida
+        len = objTextBox.value.length;
+        for (i = 0; i < len; i++)
+            if ((objTextBox.value.charAt(i) != '0') && (objTextBox.value.charAt(i) != ",")) break;
+        aux = '';
+        for (; i < 5; i++)
+            if (strCheck.indexOf(objTextBox.value.charAt(i)) != -1) aux += objTextBox.value.charAt(i);
+        aux += key;
+        len = aux.length;
+        if (len == 0) objTextBox.value = '';
+        if (len == 1) objTextBox.value = '0' + "," + '0' + aux;
+        if (len == 2) objTextBox.value = '0' + "," + aux;
+        if (len > 2 && len < 13) {
+            aux2 = '';
+            for (j = 0, i = len - 3; i >= 0; i--) {
+                if (j == 3) {
+                    aux2 += ".";
+                    j = 0;
+                }
+                aux2 += aux.charAt(i);
+                j++;
+            }
+            objTextBox.value = '';
+            len2 = aux2.length;
+            for (i = len2 - 1; i >= 0; i--)
+                objTextBox.value += aux2.charAt(i);
+            objTextBox.value += "," + aux.substr(len - 2, len);
+        }
+        return false;
+    }
+</script>

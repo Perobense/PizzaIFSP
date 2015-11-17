@@ -1,0 +1,38 @@
+﻿@model List<Domain.ProdutoModel>
+@{
+        long count = 0;
+}
+<div class="Principal" style="margin-top:100px;">
+<table id="TabelaBebidas">
+
+    @foreach (var Obj in Model)
+    {
+        <td>
+            <img src="@Url.Action("BuscaImagemBebida","Gerenciamento", new {id = Obj.IdProduto})"><br>
+            @Obj.Nome<br>
+            @Obj.Valor<br>
+            <input id="Adicionarbebida" value="Adicionar ao Carrinho" onclick="AdicinarCarrinho(@Obj.IdProduto)">
+        </td>      
+
+     }   
+</table>
+</div>
+
+<script type="text/javascript">
+    function AdicinarCarrinho(id)
+    {
+
+        $.ajax({
+            url: '@Url.Action("BuscarBebida", "Gerenciamento")',
+            data: { Dados: id },
+            success: function (data) {
+                var adiciona = true;
+                window.parent.GeraTabela(data, adiciona);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                Alert("Ops! ocorreu algum problema. nosso suporte esta verificando!")
+                //alert(xhr.responseText);
+            }
+        });
+    }
+</script>

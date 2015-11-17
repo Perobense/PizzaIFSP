@@ -1,0 +1,9 @@
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\bin\Debug\ClassLibrary1.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\bin\Debug\Persistence.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\bin\Debug\ClassLibrary1.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\bin\Debug\Persistence.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

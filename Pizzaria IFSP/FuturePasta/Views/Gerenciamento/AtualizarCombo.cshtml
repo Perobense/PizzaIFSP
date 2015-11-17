@@ -1,0 +1,360 @@
+﻿@model List<Domain.ProdutoModel>
+@{
+
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+     <link href="@Url.Content("~/Content/Sitez.css")" rel="stylesheet" type="text/css" />
+</head>
+<body onload="ValidaSessao();">
+    <div class="content">
+        <div class="tabs-content">
+                    <label style="font-size: xx-large; margin-left:30px;">Alteração de combo de produtos</label>
+            <div class="tabs-menu clearfix" style="margin-top:100px;">
+                <ul>
+                    <li><a class="active-tab-menu" href="#" data-tab="tab1">Novo Combo</a></li>
+                    <li><a href="#" data-tab="tab2" onclick="MostraCombos()">Lista</a></li>
+                </ul>
+            </div>
+
+            <div id="Novo"  class="tab1 tabs first-tab">
+                <div id="TopoL" style="display: inline; width: 25%; float: left; margin-top: 50px;">
+                    <label>Nome do Combo:</label><br>
+                    <br>
+                    <input type="text" id="NomeCombo"><br>
+                    <br>
+                    
+                    <label>Quantidade de Produto no Combo:</label><br>
+                    <br>
+                    <select id="QntProduto" onchange="QntSelect()">
+                        <option>Selecione...</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <!-- <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>-->
+                    </select><br>
+                    <br>
+
+                    <div id="SelectTipo" style="display: none"></div>
+                    <br>
+                    <br>
+                </div>
+
+                <section id="TopoR" style="display: block; width: 75%; float: left; margin-top: 100px;">
+                </section>
+            </div>
+            <div id="Lista" class="tab2 tabs" style="margin-top:100px;">
+               
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var contador = 1;
+    var controle = []
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+
+        var optionshtml = "";
+        $.ajax({
+            url: '@Url.Action("BuscaTipoProdutos", "Gerenciamento")',
+            data: {},
+            success: function (data) {
+
+                optionshtml = "<select id='TipoProduto' onchange='AtualizaBusca(0)'/><option>Selecione...</option>";
+
+                var Dados = data.split('^');
+                for (var i = 0; i < Dados.length; i++) {
+                    var Ret = Dados[i].split('|')
+                    optionshtml = optionshtml + "<option value=" + Ret[0] + ">" + Ret[1] + "</option>";
+                }
+
+                optionshtml = optionshtml + "</select>";
+
+                document.getElementById("SelectTipo").innerHTML = optionshtml;
+            }
+        });
+    }
+
+    function AtualizaBusca(param) {
+
+        var q = document.getElementById("QntProduto").selectedIndex;
+        var qy = document.getElementById("QntProduto").options;
+        if (qy[q].text > 0) {
+            var x = document.getElementById("TipoProduto" + param + "").selectedIndex;
+            var y = document.getElementById("TipoProduto" + param + "").options;
+
+            if (y[x].value != "Selecione...") {
+                $.ajax({
+                    url: '@Url.Action("BuscaProdutos", "Gerenciamento")',
+                    data: { Dados: y[x].text },
+                    success: function (data) {
+
+                        optionshtml = "";
+
+                        var Dados = data.split('|');
+                        for (var i = 0; i < Dados.length; i++) {
+                            var Ret = Dados[i].split('^')
+
+                            optionshtml = optionshtml + "<option value='" + Dados[i] + "'>" + Ret[0] + "</option>";
+                        }
+                        document.getElementById("Select" + param + "").innerHTML = optionshtml;
+                    }
+                });
+            }
+        }
+        else {
+            alert("Selecione uma Quantidade de Produtos para o Combo.")
+        }
+    }
+
+    function QntSelect() {
+        var q = document.getElementById("QntProduto").selectedIndex;
+        var qy = document.getElementById("QntProduto").options;
+        var TipoProduto = document.getElementById("SelectTipo").innerHTML;
+        var HtmlSelect = "";
+        var div = "";
+        if (qy[q].text != "Selecione...") {
+            for (var d = 1; d <= qy[q].text; d++) {
+
+                var x = TipoProduto.replace("TipoProduto", "TipoProduto" + d + "")
+                var x2 = x.replace("AtualizaBusca(0)", "AtualizaBusca(" + d + ")")
+
+                HtmlSelect = HtmlSelect + "<div class='coluna'><label>Tipo Produto</label><br>" +
+                    x2 + "<br><br> <label>Produto " + d + "</label><br>" +
+                   "<select id='Select" + d + "'>" +
+                   "<option>Selecione...</option></select>" +
+                   "<br><br>" +
+                   "<input type='button' onclick='AtualizaDiv(" + d + ")'value='Adicionar' ></div>"
+
+                div = div + "<div id='FinalizaCombo" + d + "'></div>"
+            }
+            HtmlSelect = HtmlSelect + "<div id='FinalizaCombo' value='0' style='margin-top:200px; '>" +
+                "<label id='lblPdr  style='margin-top:200px;'>Produtos: </label><br><br>" + div + "</div>" +
+                "<br><label id='lblvalor' style='display:none'>Valor: </label>" +
+                "<input type='text' id='txtvalor' onkeypress='return formatarmoeda(this,event)' style='display:none'><br>" +
+                "<input type='button' id='FecharCombo' value='MontarCombo' style='display:none;' onclick='MontarCombo()'>"
+            document.getElementById("TopoR").innerHTML = HtmlSelect;
+        }
+    }
+
+    function AtualizaDiv(id) {
+
+        var q = document.getElementById("Select" + id + "").selectedIndex;
+        var qy = document.getElementById("Select" + id + "").options;
+
+        var p = document.getElementById("QntProduto").selectedIndex;
+        var py = document.getElementById("QntProduto").options;
+
+        var htmlretorno = "";
+
+        var split = qy[q].value.split('^')
+        htmlretorno = split[0] + "<br><br>";
+
+        if (split[0] != "Selecione...") {
+
+            document.getElementById("FinalizaCombo" + id + "").innerHTML = htmlretorno;
+            document.getElementById("FinalizaCombo" + id + "").value = qy[q].value;
+
+            contador = contador + 1
+        }
+
+        var insere = true
+        for (var x = 0; x < controle.length; x++) {
+
+            if (controle[x]["id"] == id) {
+                insere = false
+                break
+            }
+        }
+        if (insere) {
+            var Obj = new Object();
+            Obj.id = id;
+            Obj.Prd = qy[q].value;
+
+            controle.push(Obj)
+        }
+
+        if (controle.length == py[p].text) {
+            document.getElementById("FecharCombo").style.display = "block"
+            document.getElementById("lblvalor").style.display = "block"
+            document.getElementById("txtvalor").style.display = "block"
+        }
+    }
+
+    function formatarmoeda(campo, tecla) {
+
+        var charCode = (tecla.which) ? tecla.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+
+        var separador_milhar = "."
+        var separador_decimal = ","
+        var sep = 0;
+        var key = '';
+        var i = j = 0;
+        var len = len2 = 0;
+        var strCheck = '0123456789';
+        var aux = aux2 = '';
+        var whichCode = (window.Event) ? tecla.which : tecla.keyCode;
+
+        if (whichCode == 13) return true; // Tecla Enter
+        if (whichCode == 8) return true; // Tecla Delete
+        key = String.fromCharCode(whichCode); // Pegando o valor digitado
+        if (strCheck.indexOf(key) == -1) return false; // Valor inválido (não inteiro)
+        len = campo.value.length;
+        for (i = 0; i < len; i++)
+            if ((campo.value.charAt(i) != '0') && (campo.value.charAt(i) != separador_decimal)) break;
+        aux = '';
+        for (; i < len; i++)
+            if (strCheck.indexOf(campo.value.charAt(i)) != -1) aux += campo.value.charAt(i);
+        aux += key;
+        len = aux.length;
+        if (len == 0) campo.value = '';
+        if (len == 1) campo.value = '0' + separador_decimal + '0' + aux;
+        if (len == 2) campo.value = '0' + separador_decimal + aux;
+
+        if (len > 2) {
+            aux2 = '';
+
+            for (j = 0, i = len - 3; i >= 0; i--) {
+                if (j == 3) {
+                    aux2 += separador_milhar;
+                    j = 0;
+                }
+                aux2 += aux.charAt(i);
+                j++;
+            }
+
+            campo.value = '';
+            len2 = aux2.length;
+            for (i = len2 - 1; i >= 0; i--)
+                campo.value += aux2.charAt(i);
+            campo.value += separador_decimal + aux.substr(len - 2, len);
+        }
+
+        return false;
+
+    }
+    function MontarCombo() {
+        var ValorCombo = document.getElementById("txtvalor").value
+        var NomeCombo = document.getElementById("NomeCombo").value
+
+        if ((ValorCombo == null) || (ValorCombo == "")) {
+            alert("Preencher o Valor do Combo.")
+            return
+        }
+
+        if ((NomeCombo == null) || (NomeCombo == "")) {
+            alert("Preencher o nome do Combo.")
+            return
+        }
+
+        var p = document.getElementById("QntProduto").selectedIndex;
+        var py = document.getElementById("QntProduto").options;
+
+        var qtd = py[p].text
+        var envialert = false
+        var Dados = ""
+        for (var i = 1; i < qtd; i++) {
+
+            if ((document.getElementById("FinalizaCombo" + i + "").innerHTML == null) || (document.getElementById("FinalizaCombo" + i + "").innerHTML == "")) {
+                envialert = true
+                break
+            }
+
+            Dados = Dados + document.getElementById("FinalizaCombo" + i + "").value + "|"
+        }
+
+        Dados = Dados + document.getElementById("FinalizaCombo" + qtd + "").value
+
+        if (envialert) {
+            alert("preencha todos os produtos deste combo.")
+        }
+
+        $.ajax({
+            url: '@Url.Action("SalvaCombo", "Gerenciamento")',
+            data: { Dados: Dados, NomeCombo: NomeCombo, ValorCombo: ValorCombo },
+            success: function (data) {
+
+                if (data == "Sucesso") {
+                    alert("Combo " + NomeCombo + " Salvo Com sucesso.")
+                }
+                else {
+                    if (data != "") {
+                        alert(data)
+                    }
+                    else {
+                        alert("Ocorreu algum erro ao Salvar o Combo.")
+                    }
+               }
+
+                document.location.reload();
+            }
+        });
+
+    }
+    jQuery(function ($) {
+        $('.tabs-menu ul li a').click(function () {
+            var a = $(this);
+            var active_tab_class = 'active-tab-menu';
+            var the_tab = '.' + a.attr('data-tab');
+
+            $('.tabs-menu ul li a').removeClass(active_tab_class);
+            a.addClass(active_tab_class);
+
+            $('.tabs-content .tabs').css({
+                'display': 'none'
+            });
+
+            $(the_tab).show();
+
+            return false;
+        });
+    });
+
+    function MostraCombos() {
+
+        $.ajax({
+            url: '@Url.Action("MostraCombos", "Gerenciamento")',
+            data: { },
+            success: function (data) {
+                document.getElementById("Lista").innerHTML = data
+            }
+        });
+
+    }
+
+    function ExcluirCombo(Id) {
+
+        $.ajax({
+            url: '@Url.Action("ExcluirCombo", "Gerenciamento")',
+            data: {Dados: Id},
+            success: function (data) {
+                MostraCombos()
+            }
+        });
+    }
+
+</script>

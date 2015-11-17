@@ -1,0 +1,329 @@
+﻿@{
+    ViewBag.Title = "RelatoriosVenda";
+}
+<html>
+<head>
+    <link href="../../Content/Relatorio.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-ui-1.8.20.js"></script>
+    <script src="../../Scripts/jquery-ui.js"></script>
+    <script src="../../Scripts/jquery-ui-1.8.20.min.js"></script>
+    <link href="../../Content/themes/base/jquery-ui.css" rel="stylesheet" />
+</head>
+
+<body onload="ValidaSessao();">
+    <div id="TopoRelatorio" class="TopoRelatorios">
+        <fieldset id="fdstTopo" class="fdstTopos">
+            <legend>Filtros</legend>
+            <br>
+            <label>Data Inicio:</label>
+            <!-- jQuery para abrir calendario --> <!-- onKeyPress: valida data na função "mascara" -->
+            <input type="text" name="DtInicio" class="calendarcss" id="DtInicio" onclick="$('#DtInicio').datepicker('show');" onkeypress="mascara(this, mdata);" onblur="validaData(this)" size="11" maxlength="10" value="" />
+            &nbsp  
+            <label>Data Fim:</label>
+            <input type="text" class="calendarcss" name="DtFim" id="DtFim" onclick="$('#DtFim').datepicker('show');" onkeypress="mascara(this, mdata);" onblur="validaData(this)" size="11" maxlength="10" value="" />
+            &nbsp
+            <label>Status:</label>
+            <select id="SltStatus">
+                <option value="#">Selecione...</option>
+                <option value="1">Finalizado</option>
+                <option value="2">Cancelado</option>
+            </select>
+            &nbsp
+           <label>Valor:</label>
+            <select id="SltValor">
+                <option value="#">Selecione...</option>
+                <option value="1">R$ 0,00    - R$ 50,00  </option>
+                <option value="2">R$ 50,00   - R$ 100,00 </option>
+                <option value="3">R$ 100,00  - R$ 150,00 </option>
+                <option value="4">R$ 150,00  - R$ 250,00 </option>
+                <option value="5">R$ 250,00  - R$ 350,00 </option>
+                <option value="6">R$ 350,00  - R$ 500,00 </option>
+                <option value="7">R$ 500,00+</option>
+            </select>
+             &nbsp
+            <label>Entregador:</label>
+            <select id="SltEntregador">
+            </select>
+            <br />
+            <br />
+            <label>TipoProduto:</label>
+            <select id="SltTipoProduto" name="SltTipoProduto" onchange="AlteraTxtProduto()">
+            </select>&nbsp&nbsp
+            <label>Produto:</label>
+            @Html.TextBox("SearchString", "", new { size = "12" })<br>
+        </fieldset>
+        <input type="hidden" id="ValoresFiltro" />
+        <!--<img src="/Gerenciamento/getGrafico" />-->
+    </div>
+
+    <input type="button" class="GeraRelatorio" id="GeraRelatorio" value="Gerar Relatorio" onclick="GeraRelatorio()" />
+    <br> <br> <br>
+    <div id="TabelaRetorno" class="TabelaRetorno"></div>
+</body>
+</html>
+<script type="text/javascript">
+    function AlteraTxtProduto() {
+        document.getElementById("SearchString").value = ""
+    }
+
+    $(function () {
+        $("#SearchString").autocomplete({
+            source: function (request, response) {
+                $.getJSON("/Gerenciamento/AutocompleteSuggestions", { term: request.term, SltTipoProduto: document.getElementById("SltTipoProduto").options[document.getElementById("SltTipoProduto").selectedIndex].value }, response);
+            },
+            minLength: 1,
+            select: function (event, ui) {
+                if (ui.item) {
+                    $("#SearchString").val(ui.item.value);
+                    $("form").submit();
+                }
+            }
+        });
+    });
+
+    function GerarExcel() {
+        location.href = "/Gerenciamento/ExportarExcel?Table=" + document.getElementById("ValoresFiltro").value + ""
+    }
+    function GerarPDF() {
+        location.href = "/Gerenciamento/GerarPDF?Table=" + document.getElementById("ValoresFiltro").value + ""
+    }
+    $(function () {
+        $(".calendarcss").datepicker({
+            dateFormat: 'dd/mm/yy',
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Proximo',
+            prevText: 'Anterior',
+            showOn: "button",
+            buttonImage: "../../Content/Imagens/DatePicker.png",
+            buttonImageOnly: true,
+            buttonText: "Selecione a data"
+        });
+    });
+    $(function () {
+        $("#DtInicio").datepicker();
+    });
+
+    $(function () {
+        $("#DtFim").datepicker();
+    });
+
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+
+        $.ajax({
+            url: '@Url.Action("ListaFuncionario", "Gerenciamento")',
+            data: {},
+            success: function (data) {
+
+                if (data != "") {
+                    var slt = ""
+                    var SplitRet = data.split('|')
+                    for (var i = 0; i < SplitRet.length; i++) {
+                        if (slt == "") {
+                            var forn = SplitRet[i].split('^')
+                            slt = "<select id='FornecedorSlt'><option id ='#'>Selecione...</option><option value=" + forn[0] + ">" + forn[1] + "</option>"
+                        }
+                        else {
+                            var forn = SplitRet[i].split('^')
+                            slt = slt + "<option value=" + forn[0] + ">" + forn[1] + "</option>"
+                        }
+                    }           //combo
+                    slt = slt + "</select>"
+                    document.getElementById("SltEntregador").innerHTML = slt;
+                }
+            }
+        });
+
+        $.ajax({
+            url: '@Url.Action("BuscaTipoProdutos", "Gerenciamento")',
+            data: {},
+            success: function (data) {
+
+                optionshtml = "<option value='#'>Selecione...</option>";
+
+                var Dados = data.split('^');
+                for (var i = 0; i < Dados.length; i++) {
+                    var Ret = Dados[i].split('|')
+                    optionshtml = optionshtml + "<option value=" + Ret[0] + ">" + Ret[1] + "</option>";
+                }
+
+                document.getElementById("SltTipoProduto").innerHTML = optionshtml;
+            }
+        });
+    }
+
+    //Validação dos campos do relatorio
+    function GeraRelatorio() {
+
+        var data_1 = document.getElementById("DtInicio").value;
+        if ((data_1 == "") || (data_1 == null)) {
+            alert("Data Inicio deve ser preenchida.")
+            return
+        }
+
+        var data_2 = document.getElementById("DtFim").value;
+
+        if ((data_2 == "") || (data_2 == null)) {
+            alert("Data Fim deve ser preenchida.")
+            return
+        }
+
+        var dtini = data_1;
+        var dtfim = data_2;
+
+        datInicio = new Date(dtini.substring(6, 10),
+                             dtini.substring(3, 5),
+                             dtini.substring(0, 2));
+        datInicio.setMonth(datInicio.getMonth() - 1);
+
+
+        datFim = new Date(dtfim.substring(6, 10),
+                          dtfim.substring(3, 5),
+                          dtfim.substring(0, 2));
+
+        datFim.setMonth(datFim.getMonth() - 1);
+
+        if (datInicio <= datFim) {
+
+        } else {
+            alert('Data Inicial é maior que Data Final');
+            return false;
+        }
+
+        var x = document.getElementById("SltStatus").selectedIndex;
+        var y = document.getElementById("SltStatus").options;
+
+        var status = y[x].text
+
+        var vx = document.getElementById("SltValor").selectedIndex;
+        var vy = document.getElementById("SltValor").options;
+
+        var Valor = vy[vx].text
+
+        var Produto = document.getElementById("SearchString").value;
+
+        var fx = document.getElementById("SltEntregador").selectedIndex;
+        var fy = document.getElementById("SltEntregador").options;
+
+        var Fornecedor = fy[fx].value
+
+        TipoProduto = document.getElementById("SltTipoProduto").options[document.getElementById("SltTipoProduto").selectedIndex].value
+
+        document.getElementById("ValoresFiltro").value = data_1 + "|" + data_2 + "|" + status + "|" + Produto + "|" + Valor + "|" + Fornecedor + "|" + TipoProduto
+        //Ajax chama a função da controller passando os dados validados da telax
+        $.ajax({
+            url: '@Url.Action("GerarRelatorio", "Gerenciamento")',
+            data: { DataInicio: data_1, DataFim: data_2, Status: status, Produto: Produto, Valor: Valor, Fornecedor: Fornecedor, TipoProduto: TipoProduto },
+            success: function (data) {
+                if (data != "") {
+                    document.getElementById("TabelaRetorno").innerHTML = data;
+                }
+                else {
+                    parent.document.location.href = "login"
+                }
+                //"QtdRegistros"
+                //"TabelaRetorno"
+
+            }
+        });
+    }
+
+    function validaData(param) {
+        var stringData = param.value
+        /******** VALIDA DATA NO FORMATO DD/MM/AAAA *******/
+
+        var regExpCaracter = /[^\d]/;     //Expressão regular para procurar caracter não-numérico.
+        var regExpEspaco = /^\s+|\s+$/g;  //Expressão regular para retirar espaços em branco.
+
+
+        splitData = stringData.split('/');
+
+
+        /* Retira os espaços em branco do início e fim de cada string. */
+        splitData[0] = splitData[0].replace(regExpEspaco, '');
+        splitData[1] = splitData[1].replace(regExpEspaco, '');
+        splitData[2] = splitData[2].replace(regExpEspaco, '');
+
+
+        /* Procura por caracter não-numérico. EX.: o "x" em "28/09/2x11" */
+        if (regExpCaracter.test(splitData[0]) || regExpCaracter.test(splitData[1]) || regExpCaracter.test(splitData[2])) {
+            alert('Caracter inválido encontrado!');
+            return false;
+        }
+
+        dia = parseInt(splitData[0], 10);
+        mes = parseInt(splitData[1], 10) - 1; //O JavaScript representa o mês de 0 a 11 (0->janeiro, 1->fevereiro... 11->dezembro)
+        ano = parseInt(splitData[2], 10);
+
+        var novaData = new Date(ano, mes, dia);
+
+        
+        if ((novaData.getDate() != dia) || (novaData.getMonth() != mes) || (novaData.getFullYear() != ano)) {
+            param.value = "";
+            alert('Data Inválida!');
+            return false;
+        }
+    }
+
+
+    function mascara(o, f) {
+        v_obj = o
+        v_fun = f
+        setTimeout("execmascara()", 1)
+    }
+    function execmascara() {
+        v_obj.value = v_fun(v_obj.value)
+    }
+    function mcep(v) {
+        v = v.replace(/\D/g, "")                    //Remove tudo o que não é dígito
+        v = v.replace(/^(\d{5})(\d)/, "$1-$2")         
+        return v
+    }
+    function mdata(v) {
+        v = v.replace(/\D/g, "");                    //Remove tudo o que não é dígito
+        v = v.replace(/(\d{2})(\d)/, "$1/$2");
+        v = v.replace(/(\d{2})(\d)/, "$1/$2");
+
+        v = v.replace(/(\d{2})(\d{2})$/, "$1$2");
+        return v;
+    }
+    function mrg(v) {
+        v = v.replace(/\D/g, '');
+        v = v.replace(/^(\d{2})(\d)/g, "$1.$2");
+        v = v.replace(/(\d{3})(\d)/g, "$1.$2");
+        v = v.replace(/(\d{3})(\d)/g, "$1-$2");
+        return v;
+    }
+    function mvalor(v) {
+        v = v.replace(/\D/g, "");//Remove tudo o que não é dígito
+        v = v.replace(/(\d)(\d{8})$/, "$1.$2");//coloca o ponto dos milhões
+        v = v.replace(/(\d)(\d{5})$/, "$1.$2");//coloca o ponto dos milhares
+
+        v = v.replace(/(\d)(\d{2})$/, "$1,$2");//coloca a virgula antes dos 2 últimos dígitos
+        return v;
+    }
+    function id(el) {
+        return document.getElementById(el);
+    }
+    function next(el, next) {
+        if (el.value.length >= el.maxLength)
+            id(next).focus();
+    }
+</script>

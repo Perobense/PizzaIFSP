@@ -1,0 +1,64 @@
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\bin\Debug\Persistence.dll.config
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\bin\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\bin\Debug\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\obj\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\obj\Debug\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\Persistence\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\bin\Debug\Persistence.dll.config
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\bin\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\bin\Debug\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\obj\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\Persistence\obj\Debug\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\bin\Debug\Persistence.dll.config
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\bin\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\bin\Debug\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\obj\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\Persistence\obj\Debug\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\bin\Debug\Persistence.dll.config
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\bin\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\bin\Debug\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\bin\Debug\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\bin\Debug\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\obj\Debug\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\Persistence\obj\Debug\Persistence.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\bin\Debug\Persistence.dll.config
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\bin\Debug\Persistence.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\bin\Debug\Persistence.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\bin\Debug\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\bin\Debug\ClassLibrary1.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\obj\Debug\Persistence.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\obj\Debug\Persistence.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\bin\Debug\Persistence.dll.config
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\bin\Debug\Persistence.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\bin\Debug\Persistence.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\bin\Debug\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\bin\Debug\ClassLibrary1.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\obj\Debug\Persistence.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\Persistence\obj\Debug\Persistence.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\bin\Debug\Persistence.dll.config
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\bin\Debug\Persistence.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\bin\Debug\Persistence.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\bin\Debug\ClassLibrary1.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\bin\Debug\ClassLibrary1.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\obj\Debug\Persistence.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\Persistence\obj\Debug\Persistence.pdb
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\bin\Debug\Persistence.dll.config
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\bin\Debug\Persistence.dll
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\bin\Debug\Persistence.pdb
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\bin\Debug\ClassLibrary1.dll
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\bin\Debug\ClassLibrary1.pdb
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\obj\Debug\Persistence.csprojResolveAssemblyReference.cache
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\obj\Debug\Persistence.dll
+C:\Users\Vítor\Documents\Faculdade\dotNet2\Pizzaria IFSP\Persistence\obj\Debug\Persistence.pdb

@@ -1,0 +1,195 @@
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\FuturePasta.pdb
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\EntityFramework.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.Helpers.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.Mvc.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.Providers.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.WebPages.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.WebPages.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\EntityFramework.xml
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.Helpers.xml
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.Mvc.xml
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.WebPages.xml
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\bin\System.Web.WebPages.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\obj\Debug\FuturePasta.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\obj\Debug\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\FuturePasta\FuturePasta\obj\Debug\FuturePasta.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\FuturePasta.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\EntityFramework.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Helpers.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Mvc.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Providers.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\EntityFramework.xml
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Helpers.xml
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Mvc.xml
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.xml
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\obj\Debug\FuturePasta.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\obj\Debug\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\Sistema - bkp\FuturePasta\FuturePasta\obj\Debug\FuturePasta.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\FuturePasta.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\EntityFramework.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Helpers.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Mvc.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Providers.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\EntityFramework.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Helpers.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Mvc.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\bin\System.Web.WebPages.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\obj\Debug\FuturePasta.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\obj\Debug\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\FuturePasta\FuturePasta\obj\Debug\FuturePasta.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\FuturePasta.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\ClassLibrary1.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\EntityFramework.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\itextsharp.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\Persistence.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\RazorPDF.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.Helpers.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.Mvc.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.Providers.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.WebPages.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Razor.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\ClassLibrary1.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\Persistence.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\EntityFramework.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.Helpers.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.Mvc.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.WebPages.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Razor.xml
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\obj\Debug\FuturePasta.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\obj\Debug\FuturePasta.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\FuturePasta\obj\Debug\FuturePasta.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\FuturePasta.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\FuturePasta.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\EntityFramework.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\itextsharp.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\Microsoft.Web.Infrastructure.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\Persistence.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\RazorPDF.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Helpers.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Http.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Mvc.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Providers.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Razor.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Deployment.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.WebPages.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Razor.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Net.Http.Formatting.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\ClassLibrary1.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\Persistence.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Http.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\EntityFramework.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Helpers.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Mvc.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.Razor.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.WebPages.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Deployment.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Web.WebPages.Razor.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\bin\System.Net.Http.Formatting.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\obj\Debug\FuturePasta.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\obj\Debug\FuturePasta.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\FuturePasta\obj\Debug\FuturePasta.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\FuturePasta.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\FuturePasta.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\ClassLibrary1.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\EntityFramework.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\itextsharp.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\Microsoft.Web.Infrastructure.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\Persistence.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\RazorPDF.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Helpers.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Http.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Mvc.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Providers.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Razor.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Deployment.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Razor.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Net.Http.Formatting.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\ClassLibrary1.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\Persistence.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Http.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\EntityFramework.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Helpers.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Mvc.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.Razor.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Deployment.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Razor.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\bin\System.Net.Http.Formatting.xml
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\obj\Debug\FuturePasta.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\obj\Debug\FuturePasta.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\Pizzaria IFSP\FuturePasta\obj\Debug\FuturePasta.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\FuturePasta.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\FuturePasta.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\ClassLibrary1.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\EntityFramework.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\itextsharp.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\Persistence.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\RazorPDF.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Helpers.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Http.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Mvc.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Providers.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Razor.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Razor.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Net.Http.Formatting.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\ClassLibrary1.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\Persistence.pdb
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Http.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\EntityFramework.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Helpers.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Mvc.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.Razor.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Web.WebPages.Razor.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\bin\System.Net.Http.Formatting.xml
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\obj\Debug\FuturePasta.csprojResolveAssemblyReference.cache
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\obj\Debug\FuturePasta.dll
+C:\Users\Vítor\Desktop\Pizzaria IFSP\FuturePasta\obj\Debug\FuturePasta.pdb

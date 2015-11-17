@@ -1,0 +1,282 @@
+﻿@{
+    ViewBag.Title = "Pedido Manual";
+}
+
+<html>
+<head>
+    <link href="../../Content/bootstrap.min.css" rel="stylesheet" />
+    
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+      <link href="../../Content/PedidoManual.css" rel="stylesheet" />
+    <div id="carregando" class="center" style="display:none">
+    <img src="../../Content/Imagens/carregando.gif" style="margin-left:500px; margin-top:50px;" width="150" height="70" />
+</div>
+
+    <div class="Container" id="Container">
+        <div class="fdst"  id="fdst"  style="display:inline;width:35%; float:left;">
+        <fieldset >
+            <legend>Pesquisar Cliente</legend>
+            <br>
+            <label>Telefone:</label>
+            <input type="text" id="Telefone" onblur="Pesquisar()" onkeypress="return InativaTxt(1,event,this)" onkeyup="return Validatxt(1,event,this)" onkeydown="return InativaTxt(1,event,this)">
+            <br>
+            <br>
+            <label>Cep:</label>
+            <input type="text" id="Cep" size="9" onkeypress="return InativaTxt(0,event,this)" onkeyup="return Validatxt(0,event,this)" onkeydown="return InativaTxt(0,event,this)">
+            &nbsp&nbsp<label>Numero:</label>
+            <input type="text" onkeypress="return mascara(event,this)" size="10" id="Numero" onblur="Pesquisar()" disabled="disabled">
+            <br>
+            <br>
+            <br>
+            <input type="button" value="Pesquisar Cliente" onclick="Pesquisar()">
+        </fieldset><br>
+        * Digite o Telefone ou Digite o Cep mais o numero da Residencia.<br>
+        </div> 
+        
+        <div class="DadosCliente" style=" display:inline; width:64%;float:right;margin-top:0px">
+                    <fieldset >
+            <legend>Dados do Cliente</legend>
+            <label id="Retorno"></label><br>
+            <label>CEP:</Label>&nbsp&nbsp
+            <input type="text" size="9" id="CEP" onkeypress="return mascara(event,this)"><img class="lupa" src="../../Content/Imagens/lupa.jpg" />&nbsp&nbsp
+            <label>Rua:</Label> 
+            <input type="text" id="Rua">&nbsp&nbsp&nbsp
+            <label>Numero:</Label> 
+            <input type="text" id="CliNumero" size="6" onkeypress="return mascara(event,this)">&nbsp&nbsp
+            <label>Telefone:</Label> 
+            <input type="text" id="CliTelefone" size="12" onkeypress="return mascara(event,this)">&nbsp&nbsp<br><br>
+
+            <label>Complemento:</Label> 
+            <input type="text" size="30" id="Complemento">&nbsp&nbsp
+            <label>Referencia:</Label> 
+            <input type="text" size="30" id="Referencia">
+            <br><br>
+            
+            <label>Nome:</Label>
+            <input type="text" id="Nome">&nbsp&nbsp
+            <label>CPF:</Label>
+            <input type="text" id="Cpf" size="12" onkeypress="return mascara(event,this)">&nbsp&nbsp
+            <label>Email:</Label> 
+            <input type="text" id="Email"><br><br>
+            
+            <input type="button" id="AddPrd" value="Adicionar Produtos" onclick="AdicionarProdutos()"/>
+        </fieldset>
+        </div>
+
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+    }
+
+    function mascara(tecla, campo) {
+
+        var charCode = (tecla.which) ? tecla.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+    }
+
+
+    function Validatxt(param, tecla, campo) {
+
+        var charCode = (tecla.which) ? tecla.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode < 96 || charCode > 105)) {
+            return false;
+        }
+
+        if (param == 1) {
+            var x = document.getElementById("Telefone").value;
+            if ((x == null) || (x == "")) {
+                document.getElementById("Cep").disabled = "";
+                document.getElementById("Numero").disabled = "disable";
+            }
+        }
+        else {
+            var x = document.getElementById("Cep").value;
+
+            if ((x == null) || (x == "")) {
+                document.getElementById("Telefone").disabled = "";
+                document.getElementById("Numero").disabled = "disable";
+            }
+        }
+    }
+
+    function InativaTxt(Param, tecla, campo) {
+
+        var charCode = (tecla.which) ? tecla.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57) && (charCode < 96 || charCode>105)) {
+            return false;
+        }
+
+
+        if (Param == 1) {
+
+            var x = document.getElementById("Telefone").value;
+            var KeyID = event.keyCode;
+            if (KeyID != 9) {
+                switch (KeyID) {
+                    case 8:
+                        if (x.length <= 1) {
+                            document.getElementById("Cep").disabled = "";
+                            document.getElementById("Numero").disabled = "";
+                        }
+                        break;
+                    case 46:
+                        if (x.length <= 1) {
+                            document.getElementById("Cep").disabled = "";
+                            document.getElementById("Numero").disabled = "";
+                        }
+                        break;
+                    default:
+                        document.getElementById("Cep").disabled = "disabled";
+                        document.getElementById("Numero").disabled = "disabled";
+                        break;
+                }
+            }
+        }
+        else {
+            var x = document.getElementById("Cep").value;
+
+            var KeyID = event.keyCode;
+            if (KeyID != 9) {
+                switch (KeyID) {
+                    case 8:
+                        if (x.length <= 1) {
+                            document.getElementById("Telefone").disabled = "";
+                            document.getElementById("Numero").disabled = "disabled";
+                        }
+                        break;
+                    case 46:
+                        if (x.length <= 1) {
+                            document.getElementById("Telefone").disabled = "";
+                            document.getElementById("Numero").disabled = "disabled";
+                        }
+                        break;
+                    default:
+                        document.getElementById("Telefone").disabled = "disabled";
+                        document.getElementById("Numero").disabled = "";
+                        break;
+                }
+            }
+        }
+    }
+
+    function Pesquisar() {
+        document.getElementById('carregando').style.display = "block";
+        document.getElementById('Container').style.display = "none";
+
+        setTimeout(function () {
+            document.getElementById('Container').style.display = "block";
+            document.getElementById('carregando').style.display = "none";
+            document.getElementById("CEP").value = ""
+            document.getElementById("Rua").value = ""
+            document.getElementById("CliNumero").value = ""
+            document.getElementById("Cpf").value = ""
+            document.getElementById("Email").value = ""
+            document.getElementById("CliTelefone").value = ""
+            document.getElementById("Nome").value = ""
+
+
+            var Telefone = document.getElementById("Telefone").value;
+
+            var Cep = document.getElementById("Cep").value;
+
+            if ((Cep != "") && (Cep != null)) {
+
+                var Numero = document.getElementById("Numero").value;
+                if ((Numero == "") || (Numero == null)) {
+                    alert("Preencher o numero")
+                    return
+                }
+            }
+
+            $.ajax({
+                url: '@Url.Action("BuscarClienteTelCep", "Gerenciamento")',
+                data: { Numero: Numero, Cep: Cep, Telefone: Telefone },
+                success: function (data) {
+
+                    if (data == "Erro de Autenticação.") {
+                        parent.document.location.href = "Login"
+                    }
+
+                    if (data == "") {
+                        document.getElementById("Retorno").textContent = "Cliente não cadastrado."
+
+                        document.getElementById("CliTelefone").value = Telefone;
+
+                    }
+                    else {
+
+                        var split = data.split('|')
+                        var Telefones = split[5].split(';')
+
+                        if ((split[0] != "") && (split[1] != "") && (split[2] != "") && (split[5] != "")) {
+
+                            document.getElementById("Retorno").textContent = "Cliente já cadastrado."
+                        }
+                        else {
+                            document.getElementById("Retorno").textContent = "Cliente não cadastrado."
+                        }
+
+                        document.getElementById("CEP").value = split[0];
+                        document.getElementById("Rua").value = split[1];
+                        document.getElementById("CliNumero").value = split[2];
+                        document.getElementById("Cpf").value = split[3];
+                        document.getElementById("Email").value = split[4];
+                        document.getElementById("CliTelefone").value = Telefones[0];
+                        document.getElementById("Nome").value = split[6];
+                        document.getElementById("Complemento").value = split[7];
+                        document.getElementById("Referencia").value = split[8];
+                    }
+                }
+            });
+        }, 300);
+    }
+
+    function AdicionarProdutos() {
+
+        var Rua = document.getElementById("Rua").value
+        var Numero = document.getElementById("CliNumero").value
+        var Telefone = document.getElementById("CliTelefone").value 
+
+        if ((Rua == "") || (Rua == null)) {
+            alert("Necessario preencher a Rua, Numero e Telefone")
+            return
+        }
+        if ((Numero == "") || (Numero == null)) {
+            alert("Necessario preencher a Rua, Numero e Telefone")
+            return
+        }
+        if ((Telefone == "") || (Telefone == null)) {
+            alert("Necessario preencher a Rua, Numero e Telefone")
+            return
+        }
+
+        var Cep = document.getElementById("CEP").value
+        var CPF = document.getElementById("Cpf").value
+        var Email = document.getElementById("Email").value
+        var NomeCliente = document.getElementById("Nome").value
+        var Complemento = document.getElementById("Complemento").value
+        var Referencia = document.getElementById("Referencia").value
+
+        $.ajax({
+            url: '@Url.Action("CadastraCliente", "Gerenciamento")',
+            data: { Rua: Rua, Telefone: Telefone, Numero: Numero, NomeCliente: NomeCliente, Cep: Cep, Complemento: Complemento, CPF: CPF, Referencia: Referencia, Email: Email },
+             success: function (data) {
+                 if (data != "") {
+                     document.location.href = "PedidoManualProduto"
+                 }
+             }
+         });
+    }
+</script>

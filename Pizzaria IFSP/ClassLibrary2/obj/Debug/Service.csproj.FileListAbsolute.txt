@@ -1,0 +1,10 @@
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary2\bin\Debug\ClassLibrary2.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary2\bin\Debug\ClassLibrary2.pdb
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary2\obj\Debug\Service.csprojResolveAssemblyReference.cache
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary2\obj\Debug\ClassLibrary2.dll
+C:\Users\Gabriel Bueno\Desktop\Nova pasta\Sistema - bkp\MelhorPedido\ClassLibrary2\obj\Debug\ClassLibrary2.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary2\bin\Debug\ClassLibrary2.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary2\bin\Debug\ClassLibrary2.pdb
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary2\obj\Debug\Service.csprojResolveAssemblyReference.cache
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary2\obj\Debug\ClassLibrary2.dll
+E:\Faculdade - IFSP\A6LP2\Projeto\MelhorPedido\ClassLibrary2\obj\Debug\ClassLibrary2.pdb

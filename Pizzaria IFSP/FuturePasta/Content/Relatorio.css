@@ -1,0 +1,54 @@
+﻿
+/***********************************************************Relatorio*********************************************************************************/
+.Cabecalho {
+    height:30px;
+        background-color: #d4d4d4;
+width:1100px;
+}
+.TopoRelatorios {
+ width: 800px;
+}
+
+.TabelaRetorno {
+width:1100px;
+}
+.GeraRelatorio {
+margin-left:1000px;
+}
+.fdstTopos {
+    margin-top:100px;
+    width: 1100px;
+}
+
+table#tblRelatorio tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table#tblRelatorio tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table#tblRelatorio th {
+    background-color: #d4d4d4;
+    color: black;
+}
+
+table#tblRelatorio {
+    width: 1100px;
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+/***********************************************************Fim - Relatorio*********************************************************************************/

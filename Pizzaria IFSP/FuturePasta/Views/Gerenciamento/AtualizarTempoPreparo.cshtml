@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "AtualizarTempoPreparo";
+}
+<div style="width: 100%; height: 100%">
+    <body onload="CarregaTemposDados()">
+
+            <div class="Topo">
+                <br>
+                <br>
+                <label>Tempo de Preparo atual</label><br>
+                <input type="text" id="TempoPreparoAtual" disabled="disabled" /><br>
+                <br>
+                <label>Alterar Tempo de Preparo</label><br>
+                <select id="TempoPreparo">
+                    <option value="5 MINUTOS">5 MINUTOS</option>
+                    <option value="10 MINUTOS">10 MINUTOS</option>
+                    <option value="15 MINUTOS">15 MINUTOS</option>
+                    <option value="20 MINUTOS">20 MINUTOS</option>
+                    <option value="25 MINUTOS">25 MINUTOS</option>
+                    <option value="30 MINUTOS">30 MINUTOS</option>
+                    <option value="35 MINUTOS">35 MINUTOS</option>
+                    <option value="40 MINUTOS">40 MINUTOS</option>
+                    <option value="45 MINUTOS">45 MINUTOS</option>
+                    <option value="50 MINUTOS">50 MINUTOS</option>
+                    <option value="55 MINUTOS">55 MINUTOS</option>
+                    <option value="60 MINUTOS">60 MINUTOS</option>
+                    <option value="1 HORA E 30 MINUTOS">1 HORA E 30 MINUTOS</option>
+                    <option value="2 HORAS">2 HORAS</option>
+                </select>
+                 <br> <br>
+                <label>Tempo Estimado de Entrega</label><br>
+                <input type="text" id="TempoEntregaAtual" disabled="disabled" /><br>
+                <br>
+                <label>Alterar Tempo Estimado de Entrega</label><br>
+                <select id="TempoEntrega">
+                    <option value="5 MINUTOS">5 MINUTOS</option>
+                    <option value="10 MINUTOS">10 MINUTOS</option>
+                    <option value="15 MINUTOS">15 MINUTOS</option>
+                    <option value="20 MINUTOS">20 MINUTOS</option>
+                    <option value="25 MINUTOS">25 MINUTOS</option>
+                    <option value="30 MINUTOS">30 MINUTOS</option>
+                    <option value="35 MINUTOS">35 MINUTOS</option>
+                    <option value="40 MINUTOS">40 MINUTOS</option>
+                    <option value="45 MINUTOS">45 MINUTOS</option>
+                    <option value="50 MINUTOS">50 MINUTOS</option>
+                    <option value="55 MINUTOS">55 MINUTOS</option>
+                    <option value="60 MINUTOS">60 MINUTOS</option>
+                    <option value="1 HORA E 30 MINUTOS">1 HORA E 30 MINUTOS</option>
+                    <option value="2 HORAS">2 HORAS</option>
+                </select>
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <input type="button" value="Alterar" onclick="AlterarTempoCadastro()">
+                <br>
+                <br>
+                <label id="retorno"></label>
+            </div>
+            <br>
+            <br />
+        </body>
+            <script type="text/javascript">
+
+                function CarregaTemposDados() {
+                    var x = '@Session["SessionFornecedor"]';
+
+                    if ((x == null) || (x == "")) {
+                        parent.document.location.href = "Login"
+                    }
+                        //Usuario logando
+                    else if (x == 0) {
+                        parent.document.location.href = "Index"
+
+                    }
+                        //Adm logando
+                    else {
+                        parent.document.getElementById("RealizarPedido").style.display = "none"
+                    }
+
+                    $.ajax({
+                        url: '@Url.Action("CarregaTemposDados", "Gerenciamento")',
+                        data: {
+                            Dados: ""
+                        },
+                        success: function (data) {
+                            if (data == "ERRAUT") {
+                                parent.document.location.href = "Login"
+                            }
+                            var Dados = data.split('||');
+
+                            document.getElementById("TempoPreparoAtual").value = Dados[0];
+                            document.getElementById("TempoEntregaAtual").value = Dados[1];
+
+                        }
+                    });
+                }
+
+                function AlterarTempoCadastro() {
+                    $.ajax({
+                        url: '@Url.Action("AlterarTempoCadastro", "Gerenciamento")',
+                        data: {
+                            TempoPreparo: document.getElementById("TempoPreparo").value,
+                            TempoEntrega: document.getElementById("TempoEntrega").value
+                        },
+                        success: function (data) {
+
+                            if (data) {
+                                CarregaTemposDados();
+                                document.getElementById("retorno").innerHTML = "Tempo de Preparo atualizado para " + document.getElementById("TempoPreparo").value + " e Tempo de Entrega atualizado para " + document.getElementById("TempoEntrega").value + ""
+                            }
+
+                        }
+                    });
+                }
+
+            </script>

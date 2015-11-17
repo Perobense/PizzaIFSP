@@ -1,0 +1,287 @@
+﻿@model List<Domain.FornecedorCepModel>
+@{
+    ViewBag.Title = "AtualizarAreaEntrega";
+}
+<body onload="ValidaSessao()">
+    <div id="Content">
+        <div id="Cep" style="display: inline; width: 45%; float: left; margin-top: 120px;">
+            <label>CEPs Cadastrados (@Model.Count)</label><br />
+            <br>
+            <table id="TabelaProdutos" style="margin-top: -5px; border-radius: 5px 5px 5px 5px; border: solid 1px #000; height: auto; width: 530px;">
+
+                <thead>
+                    <th>CEP</th>
+                    <th>Rua</th>
+                    <th>Bairro</th>
+                    <th>Taxa</th>
+                    <th></th>
+                </thead>
+
+                @foreach (var x1 in Model)
+                {
+                    <tbody>
+                        <tr style="border-bottom: 1px  solid #000;">
+                            <td>@x1.Cep</td>
+                            <td>@x1.Rua</td>
+                            <td>@x1.Bairro</td>
+                            <td>@x1.Taxa</td>
+                            <td>
+                                <input type="button"value="Excluir" onclick="RemoveCEP(@x1.IdCep)"></td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+
+        </div>
+        <div id="TesteID" class="sidebar" style="display: inline; width: 55%; float: right; margin-top: 100px;">
+            <label style="font-size: xx-large; margin-left:30px;">Atualização da área de taxa de entrega</label><br>
+            <br>
+            <fieldset style=" margin-left:30px; width: 400px;">
+                <br>
+                <br>
+                <label>Buscar por CEP:</label><br>
+                <input type="text" id="BuscaCep" onkeypress="return InativaTxt(1)" onkeyup="Validatxt(1)" onkeydown="InativaTxt(1)" /><br>
+                <br>
+                <label>Buscar por Nome de Rua:</label><br>
+                <input type="text" id="BuscaNome" onkeypress="InativaTxt(0)" onkeyup="Validatxt(0)" onkeydown="InativaTxt(0)" /><br>
+                <br>
+                &nbsp&nbsp
+                <input type="button" value="Buscar" onclick="BuscarCEP()">
+            </fieldset>
+            <br>
+            <br>
+            <div id="NovosCeps">
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+    }
+
+
+    function BuscarCEP() {
+        var BuscaCep = "";
+
+        var Cep = document.getElementById("BuscaCep").value
+
+        if (Cep != "") {
+            BuscaCep = "BuscaCep"
+        }
+        else {
+            var BuscaNome = document.getElementById("BuscaNome").value
+        }
+
+        if (BuscaCep == "BuscaCep") {
+                $.ajax({
+                    url: '@Url.Action("AtualizaBuscaCEP", "Gerenciamento")',
+                    data: { Dados: Cep, Tipo: "CEP" },
+                    success: function (data) {
+
+                        document.getElementById("NovosCeps").innerHTML = data;
+                    }
+                });
+        }
+        else {
+
+            $.ajax({
+                url: '@Url.Action("AtualizaBuscaCEP", "Gerenciamento")',
+                data: { Dados: BuscaNome, Tipo: "RUA" },
+                success: function (data) {
+                    document.getElementById("NovosCeps").innerHTML = data;
+                }
+            });
+        }
+
+    }
+    
+    function mascara(tecla,campo) {
+
+        var charCode = (tecla.which) ? tecla.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+
+        var separador_milhar = "."
+        var separador_decimal = ","
+        var sep = 0;
+        var key = '';
+        var i = j = 0;
+        var len = len2 = 0;
+        var strCheck = '0123456789';
+        var aux = aux2 = '';
+        var whichCode = (window.Event) ? tecla.which : tecla.keyCode;
+
+        if (whichCode == 13) return true; // Tecla Enter
+        if (whichCode == 8) return true; // Tecla Delete
+        key = String.fromCharCode(whichCode); // Pegando o valor digitado
+        if (strCheck.indexOf(key) == -1) return false; // Valor inválido (não inteiro)
+        len = campo.value.length;
+        for (i = 0; i < len; i++)
+            if ((campo.value.charAt(i) != '0') && (campo.value.charAt(i) != separador_decimal)) break;
+        aux = '';
+        for (; i < len; i++)
+            if (strCheck.indexOf(campo.value.charAt(i)) != -1) aux += campo.value.charAt(i);
+        aux += key;
+        len = aux.length;
+        if (len == 0) campo.value = '';
+        if (len == 1) campo.value = '0' + separador_decimal + '0' + aux;
+        if (len == 2) campo.value = '0' + separador_decimal + aux;
+
+        if (len > 2) {
+            aux2 = '';
+
+            for (j = 0, i = len - 3; i >= 0; i--) {
+                if (j == 3) {
+                    aux2 += separador_milhar;
+                    j = 0;
+                }
+                aux2 += aux.charAt(i);
+                j++;
+            }
+
+            campo.value = '';
+            len2 = aux2.length;
+            for (i = len2 - 1; i >= 0; i--)
+                campo.value += aux2.charAt(i);
+            campo.value += separador_decimal + aux.substr(len - 2, len);
+        }
+
+        return false;
+
+    }
+
+    function Validatxt (param)
+    {
+        if (param == 1)
+        {
+            var x = document.getElementById("BuscaCep").value;
+            if((x ==null) || (x == ""))
+            {
+                document.getElementById("BuscaNome").disabled = "";
+            }
+        }
+        else{
+            var x = document.getElementById("BuscaNome").value;
+            if((x ==null) || (x == ""))
+            {
+                document.getElementById("BuscaCep").disabled = "";
+            }
+        }
+    }
+
+    function InativaTxt(Param) {
+
+        if (Param == 1) {
+
+            var x = document.getElementById("BuscaCep").value;
+            var KeyID = event.keyCode;
+            if(KeyID  != 9 )
+            {
+                switch (KeyID){
+                    case 8:
+                        if (x.length <= 1) {
+                            document.getElementById("BuscaNome").disabled = "";
+                        }
+                        break;
+                    case 46:
+                        if (x.length <= 1) {
+                            document.getElementById("BuscaNome").disabled = "";
+                        }
+                        break;
+                    default:
+                        document.getElementById("BuscaNome").disabled = "disabled";
+                        break;
+                }
+            }
+        }
+        else {
+            var x = document.getElementById("BuscaNome").value;
+
+            var KeyID = event.keyCode;
+            if(KeyID  != 9 )
+            {
+                switch (KeyID) {
+                    case 8:
+                        if (x.length <= 1) {
+                            document.getElementById("BuscaCep").disabled = "";
+                        }
+                        break;
+                    case 46:
+                        if (x.length <= 1) {
+                            document.getElementById("BuscaCep").disabled = "";
+                        }
+                        break;
+                    default:
+                        document.getElementById("BuscaCep").disabled = "disabled";
+                        break;
+                }
+            }
+        }
+    }
+
+    function adicionarCEP() {
+        var CEP = ""
+        var IdTaxa = ""
+
+        $(document).ready(function () {
+            $("tr").click(function () {
+                $(this).find('td').each(function (i) {
+                    $th = $("thead th")[i];
+
+                    if ((jQuery($th).text() == "CEP") & (CEP == "")) {
+                        CEP = $(this).html()
+                    }
+                    else if ((jQuery($th).text() == "Taxa") & (IdTaxa == "")) {
+                        IdTaxa = $(this).html().substring(92, 107)
+                        var ValorTaxa = document.getElementById(IdTaxa).value
+                        if(ValorTaxa == "")
+                        {
+                            alert("Valor da taxa está vazio.")
+                        }
+                    }
+                    if ((CEP != "") && (CEP != null) && (ValorTaxa != "") && (ValorTaxa != null)) {
+                        $.ajax({
+                            url: '@Url.Action("adicionarCEP", "Gerenciamento")',
+                            data: { Dados: CEP, Taxa: ValorTaxa },
+                            success: function (data) {
+                                document.location.reload()
+                            }
+                        });
+                    }
+                });
+            })
+
+        });
+    }
+
+    function RemoveCEP(IdCEP) {
+        if (confirm("Deseja excluir este registro ?") == true)
+        {
+            $.ajax({
+                url: '@Url.Action("RemoveCEP", "Gerenciamento")',
+                data: { Dados: IdCEP},
+                success: function (data) {
+                    document.location.reload()
+                }
+
+
+            });
+        }
+    }
+</script>

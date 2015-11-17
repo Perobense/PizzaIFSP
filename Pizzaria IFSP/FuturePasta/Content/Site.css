@@ -1,0 +1,107 @@
+﻿
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.Menu {
+    list-style: none;
+    border: 1px solid #fff;
+    float: left;
+    width: 913px;
+    height: 30px;
+    text-align: center;
+    margin-left: 250px;
+    border-radius: 11px;
+    backface-visibility: hidden;
+    color:#fff;
+        -moz-box-shadow: 0 3px 10px 0 #073fa4;
+    text-shadow: 0px 0px 5px #fff;
+}
+
+.logo {
+
+    margin-top: -150px;
+}
+
+.Menu li {
+    margin-top: 10px;
+    position: relative;
+    float: left;
+    border-right: 2px solid #fff;
+    width: 300px;
+    height: 32px;
+    border-radius: 7px;
+    color:#fff;
+    background-color: #073fa4;
+}
+
+.Menu ul {
+    margin-top: 5px;
+    width: auto;
+}
+
+.Menu :hover {
+    color: #000000;
+    -moz-box-shadow: 0 3px 10px 0 #073fa4;
+    text-shadow: 0px 0px 5px #fff;
+}
+
+.Menu ul li {
+    margin-top: 1px;
+    position: relative;
+    float: left;
+    border-right: 1px solid #000000;
+    width: 100px;
+    height: 32px;
+    border-radius: 7px;
+    background-color: #073fa4;
+    top: 25px;
+}
+
+
+.Menu li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 10px;
+    display: block;
+}
+
+.Menu li:hover ul, .menu li.over ul {
+    border-radius: 7px;
+    display: block;
+}
+
+.Menu li a:hover {
+    border-radius: 7px;
+    background: #073fa4;
+    color: #000000;
+    -moz-box-shadow: 0 3px 10px 0 #073fa4;
+    -webkit-box-shadow: 0 3px 10px 0 #073fa4;
+    text-shadow: 0px 0px 5px #000000;
+}
+
+.Menu li ul {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    display: none;
+}
+
+    .Menu li ul li {
+        border: 1px solid #c0c0c0;
+        display: block;
+        width: 150px;
+    }
+
+.DadosClientePedido {
+
+   height:500px;
+   width:500px;
+}

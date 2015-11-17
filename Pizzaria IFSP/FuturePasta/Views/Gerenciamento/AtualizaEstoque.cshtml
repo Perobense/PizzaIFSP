@@ -1,0 +1,189 @@
+﻿@{
+    ViewBag.Title = "Atualiza Estoque";
+}
+
+<html>
+<head>
+    <link href="../../Content/Estoque.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery.min.js"></script>
+
+    <title>Atualizar Estoque</title>
+</head>
+<body onload="ValidaSessao()">
+    <div class="Container">
+        <br>
+        <br>
+        <div id="Filtro">
+
+            <label>Pesquisar Produto por Ingrediente: </label>
+            <input type="text" id="Ingrediente" />
+
+            <input type="button" onclick="BuscarProdutos()" value="Buscar" />
+            <br>
+            <br>
+            <br>
+            <br>
+            <label>Ativar: </label>
+            <input type="radio" name="Status" id="Ativar">
+
+            <label>Inativar: </label>
+            <input type="radio" name="Status" id="Inativar">
+            &nbsp&nbsp
+            <input type="button" id="AlterarStatus" class="AltStatus" onclick="AlterarStatus()" value="Alterar Status" />
+            <br>
+            <br>
+        </div>
+        <div id="TabelaRetorno"></div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+    }
+
+    $("h3").click(function () {
+        $(this).next().toggle("slow, 1000");
+    });
+
+    function AlterarStatus() {
+        var Radio = null;
+        var tStatus = ""
+        Radio = document.getElementsByName("Status")
+
+        for (var i = 0; i < Radio.length; i++) {
+            if (Radio[i].checked) {
+                tStatus = Radio[i].id;
+            }
+        }
+
+        if (tStatus == "") {
+            alert("Preencha um Status")
+            return
+        }
+
+        var Ingrediente = document.getElementById("Ingrediente").value
+
+        if (Ingrediente == "") {
+
+            if (!confirm("Deseja "+tStatus+" todos os produtos ?")) {
+                return
+            }
+
+        }
+        else {
+            if (!confirm("Deseja " + tStatus + " todos os produtos com o Ingrediente " + Ingrediente + " ?")) {
+                return
+            }
+        }
+
+        $.ajax({
+            url: '@Url.Action("AlteraStatusProduto", "Gerenciamento")',
+            async: false,
+            data: { Dados: tStatus, Ingrediente: Ingrediente },
+            success: function (data) {
+                alert(data)
+                document.location.reload();
+            }
+        });
+
+    }
+
+    function BuscarProdutos() {
+
+        var Ingrediente = document.getElementById("Ingrediente").value;
+        if ((Ingrediente == "") || (Ingrediente == null)) {
+            alert("Preencha um ingrediente que esta em falta no estoque!")
+            return
+        }
+
+        $.ajax({
+            url: '@Url.Action("BuscaTipoProdutoPorIngrediente", "Gerenciamento")',
+            async: false,
+            data: { Dados: Ingrediente },
+            success: function (data) {
+
+                if (data != "") {
+                    var html = "<div id='ListaTipos'><ul role='tablist'>"
+                    var Accordion = "<div id='accordion' class='accdn'>"
+                    var Tipo = data.split('|')
+
+                    for (var i = 0; i < Tipo.length ; i++) {
+                        var tSplit = Tipo[i].split('^')
+                        $.ajax({
+                            url: '@Url.Action("BuscaProdutoPorIngredienteTipoAll", "Gerenciamento")',
+                            async: false,
+                            data: { Dados: Ingrediente, Tipo: tSplit[0] },
+                            success: function (data) {
+
+                                if (data != "") {
+                                    var Dta = data.split('-')
+
+                                    html = html + "<li class='active' id='p1'><a href='#Selection" + tSplit[0] + "' role='tab'>" + tSplit[1] + "</a></li>"
+                                    Accordion = Accordion + "<div id='linha'><h3>" + tSplit[1] + " (" + Dta[1] + ")</h3><div class='slctn' id='Selection" + tSplit[0] + "'><table id='tbAccordion'>"
+
+                                    var split = Dta[0].split('|')
+                                    var th = ""
+                                    var tr = ""
+                                    for (var x = 0; x < split.length; x++) {
+
+                                        var prdstatus = split[x].split('=')
+
+                                        Accordion = Accordion + "<tr><td>" + prdstatus[0] + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbspStatus: " + prdstatus[1] + "</td></tr>"
+
+                                    }
+                                }
+                            }
+                        });
+                        Accordion = Accordion + "</table></div></div><br>"
+                    }
+                    Accordion = Accordion + "</div>"
+                    html = html + "</ul></div>"
+
+                    document.getElementById("TabelaRetorno").innerHTML = html + Accordion;
+
+                }
+            }
+        });
+        document.getElementById("AlterarStatus").style.display = "inline";
+    }
+
+    function AcionaAccordion() {
+        //$("#accordion").accordion();
+        //$("#accordion").accordion({ collapsible: true });
+        //$('#accordion .ui-accordion-content').show();
+        //$(this).next().toggle('slow, 1000');
+    }
+
+
+
+
+    jQuery(document).ready(function ($) {
+        $('a[href^="#"]').bind('click.smoothscroll', function (e) {
+            e.preventDefault();
+            var target = this.hash,
+            $target = $(target);
+
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top - 100
+            }, 1900, 'swing', function () {
+                window.location.hash = target;
+            });
+        });
+    });
+
+</script>

@@ -1,0 +1,194 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<header>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../../Content/bootstrap1.min.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery1.min.js"></script>
+    <script src="../../Scripts/bootstrap1.min.js"></script>
+</header>
+<body onload="ValidaSessao()">
+
+    <div class="Container">
+        <!-- TOPO -->
+        <div class="Topo">
+            <br>
+            <br>
+            <div class="titulo" style="font-size: 450%; margin-top: -20px; margin-left: 400px; font-family: Arial; color: black;">PizzaIFSP</div>
+        </div>
+
+        <nav class="navbar navbar-inverse" style="background-color:#40971b;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--<a class="navbar-brand" href="#">WebSiteName</a>-->
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar" style="background-color:#40971b; color:#ffffff">
+                    <ul class="nav navbar-nav" >
+                        <li class="active" ><a id="mostraPedidosID">Pedido</a></li>
+                        <li class="dropdown" id="Atualizacao">
+                            <a class="dropdown-toggle" style="color:#ffffff" data-toggle="dropdown" href="#">Atualização<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="atualizarCardapioID">Cardapio</a></li>
+                                <li><a id="Estoque">Estoque</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="Relatorio">
+                            <a class="dropdown-toggle" style="color:#ffffff"  data-toggle="dropdown" href="#">Relatorios<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="relatorioID">Relatorio de venda</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="Cadastro">
+                            <a class="dropdown-toggle" style="color:#ffffff"  data-toggle="dropdown" href="#">Cadastros<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a id="cadastroFuncId">Cadastro de Funcionario</a></li>
+                                <li><a id="PedidoManual">Cadastro de Pedido Manual</a></li>
+                                <li><a id="ComboID">Cadastro de Combo de Produtos</a></li>
+                                <li><a id="tempoID">Tempo preparo | Tempo Entrega</a></li>
+                                <li><a id="areaTaxaID">Área e taxas de entrega</a></li>
+                            </ul>
+                        </li>
+                         <li class="dropdown">
+                            <a class="dropdown-toggle" id="RealizarPedido" style="color:#ffffff"  data-toggle="dropdown" href="#">Realizar Pedido</span></a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a onclick="EndSessao()" style="color:#ffffff" >Logout</a></li>
+                        <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- IFRAMES -->
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <iframe id="iFrameServicos" style="width: 1330px; height: 1200px; position: inherit; border: 0px outset #ff6a00; margin-left: 10px; overflow: hidden; margin-top: -200px;"></iframe>
+    </div>
+</body>
+<script type="text/javascript">
+
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            document.location.href = "Login"
+        }
+        else if (x == 0) {
+            document.getElementById("mostraPedidosID").style.display = "none"
+
+            document.getElementById("Atualizacao").style.display = "none"
+
+            document.getElementById("Relatorio").style.display = "none"
+
+            document.getElementById("Cadastro").style.display = "none"
+
+        }
+        else {
+            document.getElementById("RealizarPedido").style.display = "none"
+        }
+    }
+
+    function EndSessao() {
+
+        $.ajax({
+            url: '@Url.Action("LogoutSessao", "Gerenciamento")',
+            data: {},
+            success: function (data) {
+                document.location.href = "Login"
+            }
+        });
+    }
+
+    $(function () {
+
+        $('#atualizarCardapioID').click(function () {
+            document.getElementById('iFrameServicos').src = "../Gerenciamento/AtualizarCardapio";
+            return false;
+        });
+    });
+    $(function () {
+
+        $('#tempoID').click(function () {
+            document.getElementById('iFrameServicos').src = "../Gerenciamento/AtualizarTempoPreparo";
+            return false;
+        });
+    });
+
+    $(function () {
+
+        $('#areaTaxaID').click(function () {
+            document.getElementById('iFrameServicos').src = "../Gerenciamento/AtualizarAreaEntrega";
+            return false;
+        });
+    });
+
+    $(function () {
+
+        $('#ComboID').click(function () {
+            document.getElementById('iFrameServicos').src = "../Gerenciamento/AtualizarCombo";
+            return false;
+        });
+    });
+
+    $('#relatorioID').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/RelatoriosVenda";
+        return false;
+    });
+
+    $('#cadastroFuncId').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/CadastroFuncionarios";
+        return false;
+    });
+
+    $('#cadastroID').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/CadastroPizza";
+        return false;
+    });
+
+    $('#dadosCadastraisID').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/AtualizarDados";
+        return false;
+    });
+    $('#mostraPedidosID').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/MostraPedido";
+        return false;
+    });
+    $('#Estoque').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/AtualizaEstoque";
+        return false;
+    });
+    $('#PedidoManual').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/PedidoManual";
+        return false;
+    });
+
+    $('#RealizarPedido').click(function () {
+        document.getElementById('iFrameServicos').src = "../Gerenciamento/PedidoManual";
+        return false;
+    });
+    
+
+
+</script>
+
+
+
+<br>
+<br />
+

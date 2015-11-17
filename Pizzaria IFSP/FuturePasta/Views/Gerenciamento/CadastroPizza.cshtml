@@ -1,0 +1,345 @@
+﻿@{
+    ViewBag.Title = "CadastroPizza";
+}
+
+<body onload="ValidaSessao();">
+
+    <div class="CadastroPizza" style="margin-left: 50px; width: 400px; margin-top: 80px;">
+        <label>CADASTRO DE PRODUTOS</label><br>
+        <br>
+        <label id="lblRetorno" style="display: none"></label>
+        <br>
+        <fieldset>
+            <br>
+            <legend>Cadastro de Produto</legend>
+            <label>Nome</label><br>
+            <input type="text" name="Nome" id="Nome" /><br>
+            <br>
+
+            <label>Ingredientes</label><br>
+            <textarea id="Ingredientes" name="Ingredientes" style="width: 200px;"></textarea><br>
+            <br>
+
+            <label>Valor</label><br>
+            <input type="text" name="Valor" id="Valor" maxlength="6" onkeypress="return formatarmoeda(this,event)" /><br>
+            <br>
+             <div id="TipoFIltro" style="">
+             </div><br>
+
+            <label id="lblQtdEstoque" style="display: none">Quantidade Estoque</label><br>
+            <input type="text" name="Estoque" id="QtdEstoque" maxlength="6" style="display: none" onkeypress="return validanumero(this,event)" />
+
+            <div id="sltBebidas" style="display: none">
+                <br>
+                <label>Tamanho Bebida</label><br>
+                <select name="variacoesb" id="variacoesb">
+                    <option value="#">Selecione</option>
+                    <option value="1">250 ML</option>
+                    <option value="2">300 ML</option>
+                    <option value="3">500 ML</option>
+                    <option value="4">1 L</option>
+                    <option value="5">2 L</option>
+                    <option value="6">2,5 L</option>
+                    <option value="7">3 L</option>
+                    <option value="8">3,3 L</option>
+                </select>
+                <br>
+            </div>
+            <div id="sltPizza">
+                <label>Tipo</label><br>
+                <select name="Tipo" id="Tipo">
+                    <option value="#">Selecione</option>
+                    <option value="1">Doce</option>
+                    <option value="2">Salgada</option>
+                </select><br>
+                <br>
+
+                <label>Tamanho</label><br>
+                <select name="Tamanho" id="Tamanho">
+                    <option value="#">Selecione</option>
+                    <option value="1">Pequena</option>
+                    <option value="2">Media</option>
+                    <option value="3">Grande</option>
+                </select><br>
+                <br>
+
+                <label>Inteira/Meia</label><br>
+                <select name="variacoes" id="variacoes">
+                    <option value="#">Selecione</option>
+                    <option value="1">Inteira</option>
+                    <option value="2">Meia</option>
+                </select><br>
+            </div>
+
+            <br>
+            <br>
+            <label id="lblfoto">Foto: </label>
+            <input type="file" name="file" id="foto" value="Selecione a imagem" />
+
+            <input type="button" id="Cadastrar" name="Cadastrar" value="Cadastrar" onclick="Cadastrar()">
+        </fieldset>
+        </div>
+</body>
+@ViewBag.ret
+
+
+* Para cadastro de um tipo de produto novo. Acionar a equipe MelhorPedido.
+        <script type="text/javascript">
+            function ValidaSessao() {
+                var x = '@Session["SessionFornecedor"]';
+
+                if ((x == null) || (x == "")) {
+                    parent.document.location.href = "Login"
+                }
+                    //Usuario logando
+                else if (x == 0) {
+                    parent.document.location.href = "Index"
+
+                }
+                    //Adm logando
+                else {
+                    parent.document.getElementById("RealizarPedido").style.display = "none"
+                }
+                var optionshtml = "";
+                $.ajax({
+                    url: '@Url.Action("BuscaTipoProdutos", "Gerenciamento")',
+                    data: {},
+                    success: function (data) {
+
+                        optionshtml = "<label>Selecione o tipo de produto: </label>"
+                        optionshtml = optionshtml + "<select name='TipoProduto' id='TipoProduto' onchange='AtualizaCampos()'/>";
+
+                        var Dados = data.split('^');
+                        for (var i = 0; i < Dados.length; i++) {
+                            var Ret = Dados[i].split('|')
+                            optionshtml = optionshtml + "<option value=" + Ret[0] + ">" + Ret[1] + "</option>";
+                        }
+
+                        optionshtml = optionshtml + "</select><br>";
+                        document.getElementById("TipoFIltro").innerHTML = optionshtml;
+                        AtualizaCampos()
+                    }
+                });
+
+                $.ajax({
+                    url: '@Url.Action("ExibeFoto", "Gerenciamento")',
+                    data: {},
+                    success: function (data) {
+
+                        if ((data != null) && (data != "")) {
+                            document.getElementById("lblfoto").style.display = "block"
+                            document.getElementById("foto").style.display = "block"
+                        }
+                        else {
+
+                            document.getElementById("lblfoto").style.display = "none"
+                            document.getElementById("foto").style.display = "none"
+                        }
+                    }
+                });
+            }
+
+            function AtualizaCampos() {
+                var x = document.getElementById("TipoProduto").selectedIndex;
+                var y = document.getElementById("TipoProduto").options;
+
+                if (y[x].text == "BEBIDAS") {
+                    document.getElementById("sltBebidas").style.display = "block";
+                    document.getElementById("sltPizza").style.display = "none";
+                    document.getElementById("QtdEstoque").style.display = "block";
+                    document.getElementById("lblQtdEstoque").style.display = "block";
+                }
+                else if (y[x].text == "ESFIHA") {
+                    document.getElementById("sltPizza").style.display = "none";
+                    document.getElementById("sltBebidas").style.display = "none";
+                    document.getElementById("QtdEstoque").style.display = "none";
+                    document.getElementById("lblQtdEstoque").style.display = "none";
+                }
+                else if (y[x].text == "PIZZA") {
+                    document.getElementById("sltPizza").style.display = "block";
+                    document.getElementById("sltBebidas").style.display = "none";
+                    document.getElementById("QtdEstoque").style.display = "none";
+                    document.getElementById("lblQtdEstoque").style.display = "none";
+                }
+                else {
+                    document.getElementById("sltPizza").style.display = "none";
+                    document.getElementById("sltBebidas").style.display = "none";
+                    document.getElementById("QtdEstoque").style.display = "none";
+                    document.getElementById("lblQtdEstoque").style.display = "none";
+                }
+            }
+
+            function Cadastrar() {
+                var Variacao = ""
+                var Tamanho = ""
+                var TipoPizza = ""
+                var SubVariacao = ""
+
+                var Nome = document.getElementById("Nome").value;
+                var Ingredientes = document.getElementById("Ingredientes").value;
+                var Valor = document.getElementById("Valor").value;
+                var QtdEstoque = 0;
+
+                if (Nome == "") {
+                    alert("Preencher o campo Nome.")
+                    return
+                }
+                else if (Valor == "") {
+                    alert("Preencher o campo Valor.")
+                    return
+                }
+
+                var x = document.getElementById("TipoProduto").selectedIndex;
+                var y = document.getElementById("TipoProduto").options;
+
+                var TipoProduto = y[x].text
+
+                if (TipoProduto == "BEBIDAS") {
+
+                    var QtdEstoque = document.getElementById("QtdEstoque").value;
+
+                    var Bx = document.getElementById("variacoesb").selectedIndex;
+                    var By = document.getElementById("variacoesb").options;
+
+                    Tamanho = By[Bx].text
+
+                    if (Tamanho == "Selecione") {
+                        alert("Selecione um Tamanho da Bebida.")
+                        return
+                    }
+                    else if (QtdEstoque == "")
+                    {
+                        alert("Selecione a quantidade em estoque.")
+                        return
+                    }
+                }
+                else if (TipoProduto == "PIZZA") {
+
+                    var Ptpx = document.getElementById("Tipo").selectedIndex;
+                    var Ptpy = document.getElementById("Tipo").options;
+
+                    Variacao = Ptpy[Ptpx].text
+
+                    if (Variacao == "Selecione") {
+                        alert("Selecione o Tipo.")
+                        return
+                    }
+
+                    var Ptx = document.getElementById("Tamanho").selectedIndex;
+                    var Pty = document.getElementById("Tamanho").options;
+
+                    Tamanho = Pty[Ptx].text
+
+                    if (Tamanho == "Selecione") {
+                        alert("Selecione o Tamanho.")
+                        return
+                    }
+                    var Pvx = document.getElementById("variacoes").selectedIndex;
+                    var Pvy = document.getElementById("variacoes").options;
+
+                    SubVariacao = Pvy[Pvx].text
+
+                    if (SubVariacao == "Selecione") {
+                        alert("Selecione o campo 'Inteira/Meia'.")
+                        return
+                    }
+
+                }
+                else if (TipoProduto == "ESFIHA") {
+
+                }
+                else if (TipoProduto == "JAPONES") {
+
+                }
+                else if (TipoProduto == "MASSA") {
+
+
+                }
+                else if (TipoProduto == "LANCHES") {
+
+                }
+
+                $.ajax({
+                url: '@Url.Action("CadastroProduto", "Gerenciamento")',
+                data: { Variacao: Variacao, SubVariacao: SubVariacao, Tamanho: Tamanho, Nome: Nome, Ingredientes: Ingredientes, Valor: Valor, Produto: TipoProduto, QtdEstoque: QtdEstoque },
+                success: function (data) {
+
+                    document.getElementById("lblRetorno").style.display = "block"
+                    document.getElementById("lblRetorno").innerHTML = data
+
+                    document.getElementById("Nome").value = ""
+                    document.getElementById("Ingredientes").value = ""
+                    document.getElementById("Valor").value = ""
+                    document.getElementById("variacoesb").value = ""
+                    document.getElementById("Tipo").value = ""
+                    document.getElementById("Tamanho").value = ""
+                    document.getElementById("variacoes").value = ""
+                    document.getElementById("QtdEstoque").value = ""
+                }
+            });
+            }
+
+            function validanumero(campo, tecla)
+            {
+                var charCode = (tecla.which) ? tecla.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+            }
+
+            function formatarmoeda(campo, tecla) {
+
+                var charCode = (tecla.which) ? tecla.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                }
+
+                var separador_milhar = "."
+                var separador_decimal = ","
+                var sep = 0;
+                var key = '';
+                var i = j = 0;
+                var len = len2 = 0;
+                var strCheck = '0123456789';
+                var aux = aux2 = '';
+                var whichCode = (window.Event) ? tecla.which : tecla.keyCode;
+
+                if (whichCode == 13) return true; // Tecla Enter
+                if (whichCode == 8) return true; // Tecla Delete
+                key = String.fromCharCode(whichCode); // Pegando o valor digitado
+                if (strCheck.indexOf(key) == -1) return false; // Valor inválido (não inteiro)
+                len = campo.value.length;
+                for (i = 0; i < len; i++)
+                    if ((campo.value.charAt(i) != '0') && (campo.value.charAt(i) != separador_decimal)) break;
+                aux = '';
+                for (; i < len; i++)
+                    if (strCheck.indexOf(campo.value.charAt(i)) != -1) aux += campo.value.charAt(i);
+                aux += key;
+                len = aux.length;
+                if (len == 0) campo.value = '';
+                if (len == 1) campo.value = '0' + separador_decimal + '0' + aux;
+                if (len == 2) campo.value = '0' + separador_decimal + aux;
+
+                if (len > 2) {
+                    aux2 = '';
+
+                    for (j = 0, i = len - 3; i >= 0; i--) {
+                        if (j == 3) {
+                            aux2 += separador_milhar;
+                            j = 0;
+                        }
+                        aux2 += aux.charAt(i);
+                        j++;
+                    }
+
+                    campo.value = '';
+                    len2 = aux2.length;
+                    for (i = len2 - 1; i >= 0; i--)
+                        campo.value += aux2.charAt(i);
+                    campo.value += separador_decimal + aux.substr(len - 2, len);
+                }
+
+                return false;
+
+            }
+        </script>

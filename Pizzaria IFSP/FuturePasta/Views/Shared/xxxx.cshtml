@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
+
+    <ul class="Menu">
+        <li>Cliente
+               <ul>
+            <li>@Html.ActionLink("FiltrarCliente", "FiltrarCliente")</li>
+                   </ul>
+        </li>
+        <li>Cadastros
+                    <ul>
+            <li>@Html.ActionLink("CadastroPedido", "CadastroPedido")</li>
+            <li>@Html.ActionLink("CadastroProduto", "CadastroProduto")</li>
+            <li>@Html.ActionLink("CadastroCliente", "CadastroCliente")</li>
+        </ul>
+        </li>
+        <li>Listas
+        <ul>
+            <li>@Html.ActionLink("ListaPedidos", "ListaPedidos")</li>
+            <li>@Html.ActionLink("ListaProdutos", "ListaProdutos")</li>
+            <li>@Html.ActionLink("ListaClientes", "ListaClientes")</li>
+        </ul>
+        </li>
+    </ul>
+
+<br>
+<br>
+<br>
+<br><div class="logo">
+    <img src="../../Content/Imagens/logo.png" /></div>
+<br>
+</head>
+
+<body>
+    @RenderBody()
+</body>
+</html>

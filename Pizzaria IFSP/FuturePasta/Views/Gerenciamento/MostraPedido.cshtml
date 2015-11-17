@@ -1,0 +1,200 @@
+﻿@model List<Domain.PedidoModel>
+<link href="../../Content/Pedido.css" rel="stylesheet" />
+<body onload="ValidaSessao()">
+    <div class="principal">
+        <div class="tabela">
+            <label>Pesquisar por Numero de Pedido: </label>
+            <input type="text" id="NumPedido" onkeypress="return mascara(event,this)" />&nbsp &nbsp
+             <input type="button" value="Buscar" onclick="BuscarPedido()" onblur="BuscarPedido()">
+            <input type="button" value="Limpar" onclick="document.location.reload()">
+            <input type="button" value="Atualizar" onclick="document.location.reload()"><br>
+            <br>
+            <table id="Pedido" class="Pedido">
+                <thead>
+                    <tr>
+                        <th>Nº</th>
+                        <th>Data</th>
+                        <th>Status</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x1 in Model)
+                    {
+                        if (@x1.Status == "0")
+                        {
+                        <tr id="LineWhite">
+                            <td>@x1.NumeroPedido</td>
+                            <td>@x1.Data.ToString("dd/MM/yyyy") &nbsp&nbsp&nbsp @x1.Hora</td>
+                            <td>
+                                <select name="Tipo" id=@x1.NumeroPedido>
+                                    <option value=@x1.NumeroPedido>Aguardando Atendimento</option>
+                                    <option value=@x1.NumeroPedido>Em Preparo</option>
+                                    <option value=@x1.NumeroPedido>Saiu Para Entrega</option>
+                                    <option value=@x1.NumeroPedido>Cancelado</option>
+                                </select>
+                            </td>
+                            <td><a href="#" onclick="MostrarDetalhePedido(@x1.IdPedidoFull)">Detalhes...</a> </td>
+
+                        </tr>
+                        }
+                        else if (@x1.Status == "3")
+                        {
+                        <tr id="LineGreen">
+                            <td>@x1.NumeroPedido</td>
+                            <td>@x1.Data.ToString("dd/MM/yyyy") @x1.Hora</td>
+                            <td>
+                                <select name="Tipo" id=@x1.NumeroPedido>
+                                    <option value=@x1.NumeroPedido>Em Preparo</option>
+                                    <option value=@x1.NumeroPedido>Saiu Para Entrega</option>
+                                    <option value=@x1.NumeroPedido>Cancelado</option>
+                                </select>
+                            </td>
+                            <td><a href="#" onclick="MostrarDetalhePedido(@x1.IdPedidoFull)">Detalhes...</a> </td>
+
+                        </tr>
+                        }
+                    }
+
+
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div id="DetalhePedido" class="DetalhePedido"></div>
+
+    <br>
+    <br>
+</body>
+<!--background:#F9EECF;border:1px dotted black; -->
+<script type="text/javascript">
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+           parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+
+    }
+
+    function mascara(tecla, campo) {
+        var charCode = (tecla.which) ? tecla.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+    }
+    function MostrarDetalhePedido(Id) {
+        document.getElementById("DetalhePedido").style.display = "block"
+        $.ajax({
+            url: '@Url.Action("MostrarDetalhePedido", "Gerenciamento")',
+            data: { Dados: Id },
+            success: function (data) {
+
+                document.getElementById("DetalhePedido").innerHTML = data;
+
+            }
+        });
+
+        return;
+    }
+
+    $('select').change(function () {
+
+        var selected = $(this).val();
+
+        var vx = document.getElementById(selected).selectedIndex;
+        var vy = document.getElementById(selected).options;
+
+        var Status = vy[vx].text
+
+        if (!confirm("Deseja mesmo alterar o status do pedido " + $(this).val() + " para " + Status + " ?")) {
+            $(this).val($.data(this, 'current')); // added parenthesis (edit)
+            $.data(this, 'current', $(this).val());
+            return false;
+        }
+        else {
+            $.ajax({
+                url: '@Url.Action("AlteraStatusPedido", "Gerenciamento")',
+                data: { Pedido: selected, Status: Status },
+                success: function (data) {
+                    document.location.reload()
+                }
+            });
+        }
+
+
+    });
+
+
+    function AlteraPedido(param) {
+
+        var selected = param.value;
+
+        var vx = document.getElementById(selected).selectedIndex;
+        var vy = document.getElementById(selected).options;
+
+        var Status = vy[vx].text
+
+        if (!confirm("Deseja mesmo alterar o status do pedido " + selected + " para " + Status + " ?")) {
+            $.ajax({
+                url: '@Url.Action("BuscarPedido", "Gerenciamento")',
+                    data: { Dados: selected },
+                    success: function (data) {
+
+                        document.getElementById("Pedido").innerHTML = data;
+
+                    }
+                });
+            }
+            else {
+                $.ajax({
+                    url: '@Url.Action("AlteraStatusPedido", "Gerenciamento")',
+                    data: { Pedido: selected, Status: Status },
+                    success: function (data) {
+                        document.location.reload()
+                    }
+                });
+            }
+
+
+        }
+
+        function BuscarPedido() {
+
+            var NumPedido = document.getElementById("NumPedido").value
+
+            if ((NumPedido == "") || (NumPedido == null)) {
+                alert("Insira o numero do Pedido.")
+                return
+            }
+
+            $.ajax({
+                url: '@Url.Action("BuscarPedido", "Gerenciamento")',
+            data: { Dados: NumPedido },
+            success: function (data) {
+
+                document.getElementById("Pedido").innerHTML = data;
+
+            }
+        });
+
+        return;
+    }
+
+    setInterval(function () { window.location.reload(); }, 30000);
+
+
+
+</script>

@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="VGR" Class="IFSPDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=VITOR;Initial Catalog=VGR;Persist Security Info=True;User ID=Vitor.Bueno" SettingsObjectName="Persistence.Properties.Settings" SettingsPropertyName="VGRConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.VARIACAO_PRODUTO" Member="VARIACAO_PRODUTOs">
+    <Type Name="VARIACAO_PRODUTO">
+      <Column Name="ID_VARIACAO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_VARIACAO" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TIPO_PRODUTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BEBIDA" Member="BEBIDAs">
+    <Type Name="BEBIDA">
+      <Column Name="ID_BEBIDA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_BEBIDA" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ID_TIPO_PRODUTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BORDAS" Member="BORDAs">
+    <Type Name="BORDA">
+      <Column Name="ID_BORDA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_BORDA" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CEP_FULL" Member="CEP_FULLs">
+    <Type Name="CEP_FULL">
+      <Column Name="CEP" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Rua" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Bairro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Cidade" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CLIENTE" Member="CLIENTEs">
+    <Type Name="CLIENTE">
+      <Column Name="ID_CLIENTE" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_CLIENTE" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CPF" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
+      <Column Name="TELEFONES" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CEP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RUA" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="COMPLEMENTO" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="REFERENCIA" Type="System.String" DbType="VarChar(124)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SENHA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PONTOS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CLIENTE_PEDIDO_FULL" Member="PEDIDO_FULLs" ThisKey="ID_CLIENTE" OtherKey="ID_CLIENTE" Type="PEDIDO_FULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESFIHA" Member="ESFIHAs">
+    <Type Name="ESFIHA">
+      <Column Name="ID_ESFIHA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_ESFIHA" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="INGREDIENTES" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID_TIPO_PRODUTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_VARIACAO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORMA_PAGAMENTO" Member="FORMA_PAGAMENTOs">
+    <Type Name="FORMA_PAGAMENTO">
+      <Column Name="ID_TIPO_PAGAMENTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TIPO_PAGAMENTO" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORNECEDOR" Member="FORNECEDORs">
+    <Type Name="FORNECEDOR">
+      <Column Name="ID_UTILIZADOR" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CNPJ" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="NOME" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CEP" Type="System.String" DbType="NVarChar(9)" CanBeNull="true" />
+      <Column Name="TELEFONE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="RUA" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="REFERENCIA" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="BAIRRO" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CIDADE" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="VOUCHER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NOME_CONTATO" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="VENDA_ONLINE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="USUARIO" Type="System.String" DbType="NVarChar(220)" CanBeNull="true" />
+      <Column Name="SENHA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="DATA_ULTIMO_LOGIN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="USER_LOGADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TEMPO_ENTREGA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TEMPO_PREPARO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TAXA_ENTREGA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FOTO" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DIRETORIO" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="INGREDIENTES_PADRAO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TIPO_PRODUTO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TIPO_UTILIZADOR" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="FORNECEDOR_FORNECEDOR_CEP" Member="FORNECEDOR_CEPs" ThisKey="ID_UTILIZADOR" OtherKey="FORECEDOR_ID" Type="FORNECEDOR_CEP" />
+      <Association Name="FORNECEDOR_FORNECEDOR_COMBO" Member="FORNECEDOR_COMBOs" ThisKey="ID_UTILIZADOR" OtherKey="ID_FORNECEDOR" Type="FORNECEDOR_COMBO" />
+      <Association Name="FORNECEDOR_FORNECEDOR_DADOS_BANCARIO" Member="FORNECEDOR_DADOS_BANCARIO" ThisKey="ID_UTILIZADOR" OtherKey="ID_FORNECEDOR_CONTA" Type="FORNECEDOR_DADOS_BANCARIO" Cardinality="One" />
+      <Association Name="FORNECEDOR_FORNECEDOR_DELIVERY" Member="FORNECEDOR_DELIVERies" ThisKey="ID_UTILIZADOR" OtherKey="ID_FORNECEDOR" Type="FORNECEDOR_DELIVERY" />
+      <Association Name="FORNECEDOR_FORNECEDOR_HORARIO" Member="FORNECEDOR_HORARIOs" ThisKey="ID_UTILIZADOR" OtherKey="ID_FORNECEDOR" Type="FORNECEDOR_HORARIO" />
+      <Association Name="FORNECEDOR_FORNECEDOR_PRODUTO" Member="FORNECEDOR_PRODUTOs" ThisKey="ID_UTILIZADOR" OtherKey="ID_FORNECEDOR" Type="FORNECEDOR_PRODUTO" />
+      <Association Name="FORNECEDOR_PEDIDO_FULL" Member="PEDIDO_FULLs" ThisKey="ID_UTILIZADOR" OtherKey="ID_FORNECEDOR" Type="PEDIDO_FULL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORNECEDOR_CEP" Member="FORNECEDOR_CEPs">
+    <Type Name="FORNECEDOR_CEP">
+      <Column Name="ID_CEP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CEP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FORECEDOR_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TAXA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RUA" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="BAIRRO" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="MUNICIPIO" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="ESTADO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="FORNECEDOR_FORNECEDOR_CEP" Member="FORNECEDOR" ThisKey="FORECEDOR_ID" OtherKey="ID_UTILIZADOR" Type="FORNECEDOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORNECEDOR_COMBO" Member="FORNECEDOR_COMBOs">
+    <Type Name="FORNECEDOR_COMBO">
+      <Column Name="ID_COMBO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PRODUTOS" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VALOR_COMBO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NOME_COMBO" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="FORNECEDOR_FORNECEDOR_COMBO" Member="FORNECEDOR" ThisKey="ID_FORNECEDOR" OtherKey="ID_UTILIZADOR" Type="FORNECEDOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORNECEDOR_DADOS_BANCARIOS" Member="FORNECEDOR_DADOS_BANCARIOs">
+    <Type Name="FORNECEDOR_DADOS_BANCARIO">
+      <Column Name="ID_FORNECEDOR_CONTA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CONTA" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AGENCIA" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BANCO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CPF" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DATA_PAGAMENTO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="FORNECEDOR_FORNECEDOR_DADOS_BANCARIO" Member="FORNECEDOR" ThisKey="ID_FORNECEDOR_CONTA" OtherKey="ID_UTILIZADOR" Type="FORNECEDOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORNECEDOR_DELIVERY" Member="FORNECEDOR_DELIVERies">
+    <Type Name="FORNECEDOR_DELIVERY">
+      <Column Name="ID_FORNECEDOR_TRANSPORTE" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOME" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CPF" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="TIPO_TRANSPORTE" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="IDENTIFICACAO" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="PLACA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="FORNECEDOR_DELIVERY_PEDIDO_FULL" Member="PEDIDO_FULLs" ThisKey="ID_FORNECEDOR_TRANSPORTE" OtherKey="ID_DELIVERY" Type="PEDIDO_FULL" />
+      <Association Name="FORNECEDOR_FORNECEDOR_DELIVERY" Member="FORNECEDOR" ThisKey="ID_FORNECEDOR" OtherKey="ID_UTILIZADOR" Type="FORNECEDOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORNECEDOR_HORARIO" Member="FORNECEDOR_HORARIOs">
+    <Type Name="FORNECEDOR_HORARIO">
+      <Column Name="ID_FORNECEDOR_HORARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HORA_INICIO" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="HORA_FIM" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="DIA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="FORNECEDOR_FORNECEDOR_HORARIO" Member="FORNECEDOR" ThisKey="ID_FORNECEDOR" OtherKey="ID_UTILIZADOR" Type="FORNECEDOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FORNECEDOR_PRODUTO" Member="FORNECEDOR_PRODUTOs">
+    <Type Name="FORNECEDOR_PRODUTO">
+      <Column Name="ID_FORNECEDOR_PRODUTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOME" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="VALOR" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="VALOR_PROMOCAO" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="PROMOCAO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="INGREDIENTES" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TIPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SUBVARIACAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FOTOINTEIRA" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FOTOMEIA" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TAMANHO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VARIACAO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QTD_ESTOQUE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="FORNECEDOR_FORNECEDOR_PRODUTO" Member="FORNECEDOR" ThisKey="ID_FORNECEDOR" OtherKey="ID_UTILIZADOR" Type="FORNECEDOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HISTORICO_PEDIDO" Member="HISTORICO_PEDIDOs">
+    <Type Name="HISTORICO_PEDIDO">
+      <Column Name="NUMERO_PEDIDO" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DATA_HORA" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ITENS_PEDIDO" Member="ITENS_PEDIDOs">
+    <Type Name="ITENS_PEDIDO">
+      <Column Name="ITEM_PEDIDO_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PEDIDO_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PRODUTO" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="QUANTIDADE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BORDA" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="OBSERVACOES" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PEDIDO_FULL" Member="PEDIDO_FULLs">
+    <Type Name="PEDIDO_FULL">
+      <Column Name="ID_PEDIDO_FULL" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NUMERO_PEDIDO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CLIENTE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FORMA_PAGAMENTO" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DATA" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="HORA" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CEP" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="RUA" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TROCO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ID_DELIVERY" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VALOR_TOTAL" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="OBSERVACOES" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="NOTAFISCAL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DESCONTO" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="CLIENTE_PEDIDO_FULL" Member="CLIENTE" ThisKey="ID_CLIENTE" OtherKey="ID_CLIENTE" Type="CLIENTE" IsForeignKey="true" />
+      <Association Name="FORNECEDOR_PEDIDO_FULL" Member="FORNECEDOR" ThisKey="ID_FORNECEDOR" OtherKey="ID_UTILIZADOR" Type="FORNECEDOR" IsForeignKey="true" />
+      <Association Name="FORNECEDOR_DELIVERY_PEDIDO_FULL" Member="FORNECEDOR_DELIVERY" ThisKey="ID_DELIVERY" OtherKey="ID_FORNECEDOR_TRANSPORTE" Type="FORNECEDOR_DELIVERY" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PIZZA" Member="PIZZAs">
+    <Type Name="PIZZA">
+      <Column Name="ID_PIZZA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_PIZZA" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="INGREDIENTES" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID_VARIACAO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TIPO_PRODUTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PIZZA_DOCE" Member="PIZZA_DOCEs">
+    <Type Name="PIZZA_DOCE">
+      <Column Name="ID_PIZZA_DOCE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NOME" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SUBVARIACAO_PRODUTO" Member="SUBVARIACAO_PRODUTOs">
+    <Type Name="SUBVARIACAO_PRODUTO">
+      <Column Name="ID_SUBVARIACAO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_SUBVARIACAO" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TIPO_PRODUTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAMANHO_PRODUTO" Member="TAMANHO_PRODUTOs">
+    <Type Name="TAMANHO_PRODUTO">
+      <Column Name="ID_TAMANHO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_TAMANHO" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TIPO_PRODUTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_FORNECEDOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIPO_PRODUTO" Member="TIPO_PRODUTOs">
+    <Type Name="TIPO_PRODUTO">
+      <Column Name="ID_TIPO_PRODUTO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOME_TIPO_PRODUTO" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

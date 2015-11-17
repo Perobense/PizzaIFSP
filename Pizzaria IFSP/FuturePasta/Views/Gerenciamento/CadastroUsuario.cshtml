@@ -1,0 +1,104 @@
+﻿@model Domain.FornecedorModel
+@{
+    ViewBag.Title = "Cadastro Usuário";
+}
+
+<body onload="">
+    <form method="post">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2 style="margin-left: 50px;">Cadastro de usuário</h2>
+        <br>
+        @ViewBag.Retorno
+        <br>
+        <br>
+
+        <br>
+        <div style="width: 400px; height: 400px; margin-left: 50px;">
+            <fieldset>
+                <legend>Insira seus dados @Model.Nome</legend>
+                <br>
+                <label>Nome: </label>
+                <br>
+                <input type="hidden" name="ID" value= "@Model.IdUtilizador">
+                <input type="text" name="nome" value= "@Model.Nome"><br>
+                <br>
+                <label>CPF </label>
+                <br>
+                <input type="text" name="cnpj"  maxlength="18" onkeypress='mascaraMutuario(this,cpfCnpj)'  value= "@Model.Cnpj" ><br>
+                <br>
+                <label>Nome Completo: </label>
+                <br>
+                <input type="text" name="NomeContato" value= "@Model.NomeContato" ><br>
+                <br>
+                <label>CEP: </label>
+                <br>
+                <input type="text" name="Cep" value="@Model.Cep" onkeypress='return mascara(event,this)'><br>
+                <br>
+                <label>Bairro: </label>
+                <br>
+                <input type="text" name="Bairro" value="@Model.Bairro"><br>
+                <br>
+                <label>Telefone: </label>
+                <br>
+                <input type="text" name="Telefone" value="@Model.Telefone"><br>
+                <br>
+                <label>Rua: </label>
+                <br>
+                <input type="text" name="Rua" value="@Model.Rua"><br>
+                <br>
+                <label>Numero: </label>
+                <br>
+                <input type="text" name="Numero" value="@Model.Numero" onkeypress='return mascara(event,this)'><br>
+                <br>
+                <label>Email: </label>
+                <br>
+                <input type="text" name="Email" value="@Model.Email"><br>
+                <br>
+                <label>Usuario: </label>
+                <br>
+                <input type="text" name="Usuario" value="@Model.Usuario"><br>
+                <br>
+                <label>Senha: </label>
+                <br>
+                <input type="password" name="Senha" value="@Model.Senha"><br>
+                <br>
+
+                <label>Cidade: </label>
+                <br>
+                <input type="text" name="Cidade" value="@Model.Cidade"><br>
+                <br>
+
+
+                <br>
+                <input type="submit" id="Cadastrar" name="Cadastrar" value="Cadastrar">
+            </fieldset>
+        </div>
+        <div style="margin-top: -150px;">
+        </div>
+    </form>
+</body>
+<script type="text/javascript">
+
+    function ChamaPagListaForn() {
+        var $form = $(document.createElement('form')).css({ display: 'none' }).attr("method", "POST").attr("action", "../CadastroUsuario");
+
+        $("body").append($form);
+        $form.submit();
+    }
+
+    function mascaraMutuario(o, f) {
+        v_obj = o
+        v_fun = f
+        setTimeout('execmascara()', 1)
+    }
+
+    function execmascara() {
+        v_obj.value = v_fun(v_obj.value)
+    }
+
+</script>

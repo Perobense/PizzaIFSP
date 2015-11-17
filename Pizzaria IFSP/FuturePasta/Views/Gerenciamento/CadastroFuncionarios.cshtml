@@ -1,0 +1,199 @@
+﻿@model List<Domain.FornecedorDeliveryModel>
+@{
+    ViewBag.Title = "CadastroFuncionarios";
+}
+
+<body onload="ValidaSessao();">
+    <div class="CadastroFornecedor" style="display: inline; width: 45%; float: left; margin-left: 50px; width: 400px; margin-top: 80px;">
+        <label>CADASTRO DOS ENTREGADOR</label><br>
+        <br>
+        <div id="TipoFIltro" style="">
+        </div>
+        <br>
+        <fieldset>
+            <legend>Cadastro de Entregador</legend>
+            <label>Nome</label><br>
+            <input type="text" name="nome" id="Nome" /><br>
+            <br>
+
+            <label>CPF</label><br>
+            <input name="cpf" type="text" class="imput" id="Cpf" size="12" maxlength="11" onKeyPress="return Apenas_Numeros(event);" onBlur="validaCPF(this);"><br>
+            <br>
+
+            <label>Tipo Transporte</label><br>
+            <select id="TpTransporte">
+                <option value="1">Moto</option>
+                <option value="2">Carro</option>
+                <option value="3">Bicicleta</option>
+            </select><br>
+            <br>
+
+            <label>Placa</label><br>
+            <input type="text" name="Placa" id="Placa" /><br><br>
+
+            <label>Numero Habilitação</label><br>
+            <input type="text" name="cnh" id="cnh" /><br>
+            <br>
+            <input type="submit" id="Cadastrar" name="Cadastrar" value="Cadastrar" onclick="CadastrarFuncionario()">
+        </fieldset>
+    </div>
+    <div class="ListaFornecedor" style="display: inline; width: 55%; float: right; margin-left: 50px; width: 400px; margin-top: 80px;">
+        <table id="fornecedor" style="text-align:center;">
+            <thead>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Tipo Veiculo</th>
+                <th>Placa</th>
+                <th>Numero Habilitação</th>
+            </thead>
+            @foreach (var x in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@x.Nome</td>
+                        <td>@x.Cpf</td>
+                        <td>@x.TipoTransporte</td>
+                        <td>@x.Placa</td>
+                        <td>@x.Identificacao</td>
+                        <tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</body>
+
+@ViewBag.ret
+
+<script type="text/javascript">
+    function ValidaSessao() {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+    }
+    function mcpf(v) {
+        v = v.replace(/\D/g, "")                    //Remove tudo o que não é dígito
+        v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
+        v = v.replace(/(\d{3})(\d)/, "$1.$2")       //Coloca um ponto entre o terceiro e o quarto dígitos
+        //de novo (para o segundo bloco de números)
+        v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2") //Coloca um hífen entre o terceiro e o quarto dígitos
+        return v
+    }
+    function CadastrarFuncionario() {
+
+        var Nome = document.getElementById("Nome").value
+        var Cpf = document.getElementById("Cpf").value
+        var Placa = document.getElementById("Placa").value
+        var cnh = document.getElementById("cnh").value
+
+        var x = document.getElementById("TpTransporte").selectedIndex;
+        var y = document.getElementById("TpTransporte").options;
+
+        var TpTransporte = y[x].text
+
+        if ((Nome == "") || (Nome == null) || (Cpf == "") || (Cpf == null)
+            || (TpTransporte == "") || (TpTransporte == null) || (cnh == "") || (cnh == null) || (Placa == "") || (Placa == null)) {
+            alert("preencher todos os campos")
+            return
+        }
+
+        $.ajax({
+            url: '@Url.Action("CadastraFuncionario", "Gerenciamento")',
+                    data: { Nome: Nome, Cpf: Cpf, TpTransporte: TpTransporte, cnh: cnh, Placa: Placa },
+                    success: function (data) {
+                        alert(data)
+                        document.location.reload()
+                    }
+                });
+            }
+    function validaCPF(cpf) {
+        erro = new String;
+
+        if (cpf.value.length == 11) {
+            cpf.value = cpf.value.replace('.', '');
+            cpf.value = cpf.value.replace('.', '');
+            cpf.value = cpf.value.replace('-', '');
+
+            var nonNumbers = /\D/;
+
+            if (nonNumbers.test(cpf.value)) {
+                erro = "A verificacao de CPF suporta apenas números!";
+            }
+            else {
+                if (cpf.value == "00000000000" ||
+                        cpf.value == "11111111111" ||
+                        cpf.value == "22222222222" ||
+                        cpf.value == "33333333333" ||
+                        cpf.value == "44444444444" ||
+                        cpf.value == "55555555555" ||
+                        cpf.value == "66666666666" ||
+                        cpf.value == "77777777777" ||
+                        cpf.value == "88888888888" ||
+                        cpf.value == "99999999999") {
+
+                    erro = "Número de CPF inválido!"
+                }
+
+                var a = [];
+                var b = new Number;
+                var c = 11;
+
+                for (i = 0; i < 11; i++) {
+                    a[i] = cpf.value.charAt(i);
+                    if (i < 9) b += (a[i] * --c);
+                }
+
+                if ((x = b % 11) < 2) { a[9] = 0 } else { a[9] = 11 - x }
+                b = 0;
+                c = 11;
+
+                for (y = 0; y < 10; y++) b += (a[y] * c--);
+
+                if ((x = b % 11) < 2) { a[10] = 0; } else { a[10] = 11 - x; }
+
+                if ((cpf.value.charAt(9) != a[9]) || (cpf.value.charAt(10) != a[10])) {
+                    erro = "Número de CPF inválido.";
+
+                }
+            }
+        }
+        else {
+            if (cpf.value.length == 0)
+                return false
+            else
+                erro = "Número de CPF inválido.";
+        }
+        if (erro.length > 0) {
+            alert(erro);
+            cpf.focus();
+            return false;
+        }
+        return true;
+    }
+    function Apenas_Numeros(caracter) {
+        var nTecla = 0;
+        if (document.all) {
+            nTecla = caracter.keyCode;
+        } else {
+            nTecla = caracter.which;
+        }
+        if ((nTecla > 47 && nTecla < 58)
+        || nTecla == 8 || nTecla == 127
+        || nTecla == 0 || nTecla == 9  // 0 == Tab
+        || nTecla == 13) { // 13 == Enter
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>

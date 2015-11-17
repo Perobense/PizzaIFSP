@@ -1,0 +1,51 @@
+﻿
+/***********************************************************Cardapio*********************************************************************************/
+.ListaDetalheCardp {
+    display: none;
+    width: 40%;
+    float: right;
+    margin-top: 100px;
+    position:fixed; 
+    margin-left:670px;
+}
+
+.TesteID {
+    display: inline;
+    width: 40%;
+    float: left;
+    margin-top: 100px;
+    margin-left: 20px;
+}
+
+table#TabelaProdutos {
+    margin-top: -5px;
+    border-radius: 5px 5px 5px 5px;
+    border: solid 1px #000;
+    height: auto;
+    width: 445px;
+}
+    table#TabelaProdutos th {
+        border-bottom: 1px solid #000;
+    }
+
+    table#TabelaProdutos tr {
+        border-bottom: 1px solid #000;
+    }
+.SubCardapio {
+    height: auto;
+    margin-top: 30px;
+    margin-left: 2px;
+    width: 445px;
+    text-align: left;
+}
+.saborvalor {
+width: 100%; margin-top: 5px;
+}
+.LbNovoValor {
+    display: none;
+}
+
+NovoValor{
+    display: none;
+}
+/***********************************************************Fim - Cardapio*********************************************************************************/

@@ -1,0 +1,564 @@
+﻿@model List<Domain.ProdutoModel>
+<link href="../../Content/Cardapio.css" rel="stylesheet" />
+<html>
+<head>
+
+    <body onload="ValidaSessao()">
+
+        <div id="ListaDetalheCardp" class="ListaDetalheCardp">
+            <label style="font-size: xx-large;">Informações do produto que deseja atualizar</label><br>
+            <br>
+            <fieldset>
+                <input type="hidden" name="id" id="id" /><br>
+                <label>Nome Produto</label>
+                <input type="text" readonly="true" name="Sabor" id="Sabor" /><br>
+                <br>
+
+                <label id="LabelIngredientes">Ingredientes</label>
+                <textarea id="Ingredientes" name="Ingredientes"></textarea>
+                <br>
+                <br>
+
+                <label>Valor</label>
+                <input type="text" name="Valor" id="Valor" maxlength="6" onclick="ZeraValue()" onkeypress='return formatarmoeda(this,event)' />
+                <br>
+                <br>
+
+                <label>Promoção:</label>
+                <input type="checkbox" id="Promocao" onclick="MostraValorCampo()">
+                <br>
+                <br>
+                <label id="LbNovoValor" class="LbNovoValor">Valor Promoção:</label>&nbsp<input type="text" id="NovoValor" class="NovoValor" maxlength="6" onkeypress='return formatarmoeda(this,event)'>
+                <br>
+                <br>
+                <label>Status:</label>
+                <input type="checkbox" id="Status">
+                <br>
+                <br>
+                <input type="submit" id="Atualizar" name="Atualizar" value="Atualizar" onclick="Alteracadastro()">
+                <input type="submit" id="Limpar" name="Limpar" value="Limpar" onclick="AlterarItemCardp(0,1)">
+            </fieldset>
+        </div>
+
+
+        <div id="TesteID" class="TesteID">
+            <label style="font-size: xx-large;">Atualiza Cardápio</label><br>
+            <br>
+            <fieldset style="width: 400px;">
+                <div id="TipoFIltro" style="">
+                </div>
+                <br>
+                <label>Nome produto:</label>
+                <input type="text" id="BuscaNome" onkeyup="AtualizaBusca(this)" /><br>
+                <br>
+                <label>Status</label>
+                <select id="FiltroStatus" onchange="AtualizaBusca(9)">
+                    <option value="0">Todos</option>
+                    <option value="1">Ativo</option>
+                    <option value="2">Inativo</option>
+                </select>
+                <br>
+                <br>
+                <div id="Variacao"></div>
+                <br>
+                <div id="Tamanho"></div>
+                <br>
+                <div id="Subvariacao"></div>
+                <br>
+            </fieldset>
+            <div id="SubCardapio" class="SubCardapio">
+
+                <table id="TabelaProdutos">
+                    @foreach (var x1 in Model)
+                    {
+                        <tr>
+                            <th>
+                                <div class="saborvalor">
+                                    <input type="Radio" value="Editar" name="Editar" id="AtualizaCard" onclick="AlterarItemCardp (@x1.IdFornecedorProduto,0)">
+                                    @x1.Nome...................................@x1.Valor
+                                </div>
+                                <br>
+                                <div class="Ingredientes" style="text-align: left;">@x1.Ingredientes<br>
+                                    <br>
+                                </div>
+                            </th>
+                        </tr>
+                    }
+                </table>
+
+            </div>
+        </div>
+    </body>
+</html>
+
+<script type="text/javascript">
+    function ValidaSessao()
+    {
+        var x = '@Session["SessionFornecedor"]';
+
+        if ((x == null) || (x == "")) {
+            parent.document.location.href = "Login"
+        }
+            //Usuario logando
+        else if (x == 0) {
+            parent.document.location.href = "Index"
+
+        }
+            //Adm logando
+        else {
+            parent.document.getElementById("RealizarPedido").style.display = "none"
+        }
+        var optionshtml ="";
+        $.ajax({
+            url: '@Url.Action("BuscaTipoProdutos", "Gerenciamento")',
+            data: {  },
+            success: function (data) {
+
+                optionshtml ="<br><label>Tipo Produto: </label>"
+                optionshtml = optionshtml+ "<select name='TipoProduto' id='TipoProduto' onchange='AtualizaBusca(0)'/>";
+                
+                var Dados = data.split('^');
+                for (var i =0; i < Dados.length; i++)    
+                {
+                    var Ret = Dados[i].split('|')
+                    optionshtml = optionshtml +"<option value="+Ret[0]+">"+Ret[1]+"</option>";
+                }
+                
+                optionshtml = optionshtml + "</select><br>";
+                document.getElementById("TipoFIltro").innerHTML = optionshtml;
+
+                AtualizaBusca(0)
+            }});
+
+        
+    }
+
+    function ZeraValue()
+    {
+        document.getElementById("Valor").value="";
+    }
+
+
+    function AlterarItemCardp(Id,limpar) {
+  
+        if (limpar == 1)
+        {
+            Id = document.getElementById("id").value;
+        }
+        document.getElementById("ListaDetalheCardp").style.display = "block";
+        $.ajax({
+            url: '@Url.Action("AlterarCardapio", "Gerenciamento")',
+            data: { Dados: Id, Tipo:"" },
+            success: function (data) {
+                
+                var Retorno = data.split('^');
+    
+                if (Retorno[9] != 3)
+                {
+                    document.getElementById("Sabor").style.display = "block";
+                    document.getElementById("Ingredientes").style.display = "block";
+                    document.getElementById("Valor").style.display = "block";
+                    document.getElementById("LabelIngredientes").style.display = "block";
+
+                    document.getElementById("Sabor").value = Retorno[0];
+                    document.getElementById("Ingredientes").value = Retorno[1];
+                    document.getElementById("Valor").value = Retorno[2];
+                }
+                else
+                {
+                    document.getElementById("Sabor").style.display = "block";
+                    document.getElementById("Ingredientes").style.display = "none";
+                    document.getElementById("Valor").style.display = "block";
+
+                    document.getElementById("LabelIngredientes").style.display = "none";
+                    document.getElementById("NovoValor").style.display = "none";
+                    document.getElementById("LbNovoValor").style.display = "none";
+
+                    document.getElementById("Sabor").value = Retorno[0];
+                    document.getElementById("Valor").value = Retorno[2];
+                
+                }
+
+                if (Retorno[6] == "True")
+                {
+                    document.getElementById("LbNovoValor").style.display = "block" 
+                    document.getElementById("NovoValor").style.display = "block" 
+                    document.getElementById("NovoValor").value = Retorno[10]
+                    document.getElementById("Promocao").checked = true;
+                }
+                else
+                { 
+                    document.getElementById("LbNovoValor").style.display = "none" 
+                    document.getElementById("NovoValor").style.display = "none" 
+                    document.getElementById("NovoValor").value = ""
+                    document.getElementById("Promocao").checked = false;
+                
+                }
+
+                if (Retorno[7] == "True")
+                {
+                    document.getElementById("Status").checked = true;
+                }
+                else
+                { 
+                    document.getElementById("Status").checked = false;
+                
+                }
+
+                document.getElementById("id").value = Retorno[8];
+                
+            }
+        });
+   
+        return;
+    }
+
+    function AtualizaBusca(txtBuscaNome) {
+        
+        var Variacao = "";
+        var Tamanhos = "";
+        var SubVariacao = "";
+        var BuscaNome = "";
+        var q = document.getElementById("TipoProduto").selectedIndex;
+        var qy = document.getElementById("TipoProduto").options;
+
+        var TipoProduto = qy[q].value;
+
+
+        var sltStatus = document.getElementById("FiltroStatus").selectedIndex;
+            
+        if (sltStatus == 0)
+        {
+            Status = ""
+        }
+        else if(sltStatus == 1)
+        {
+            Status = "true"
+        }
+        else
+        {
+            Status = "false"
+        }
+        
+        if(txtBuscaNome != 0)
+        {
+            if (txtBuscaNome != 0)
+            {
+                if(txtBuscaNome == 888 || txtBuscaNome == 9)
+                {
+                    BuscaNome = document.getElementById("BuscaNome").value
+                }
+                else
+                {
+                    BuscaNome = txtBuscaNome.value
+                }
+            }
+            else
+            {
+                BuscaNome = "";
+            }
+
+            var SChks = document.getElementsByName("ckSubVariacao");
+            
+            for (var i = 0; i < SChks.length; i++) {
+
+                if (SChks[i].checked == true) {
+
+                    if (SubVariacao == "") {
+                        SubVariacao = SChks[i].value
+                    }
+                    else {
+                        SubVariacao = SubVariacao + "," + SChks[i].value;
+                    }
+                }
+            }
+
+            var TChk = document.getElementsByName("ckTamanho");
+            
+            for (var i = 0; i < TChk.length; i++) {
+
+                if (TChk[i].checked == true) {
+
+                    if (Tamanhos == "") {
+                        Tamanhos = TChk[i].value
+                    }
+                    else {
+                        Tamanhos = Tamanhos + "," + TChk[i].value;
+                    }
+                }
+            }
+            var VChk = document.getElementsByName("ckVariacao");
+            
+            for (var i = 0; i < VChk.length; i++) {
+
+                if (VChk[i].checked == true) {
+
+                    if (Variacao == "") {
+                        Variacao = VChk[i].value
+                    }
+                    else {
+                        Variacao = Variacao + "," + VChk[i].value;
+                    }
+                }
+            }
+        }
+
+        if(txtBuscaNome == 0)
+        {
+            var q = document.getElementById("TipoProduto").selectedIndex;
+            var qy = document.getElementById("TipoProduto").options;
+
+            var TipoProdutoTxt = qy[q].text;
+        
+
+            $.ajax({
+                url: '@Url.Action("CarregaTamanho", "Gerenciamento")',
+                data: { Tipo:TipoProdutoTxt},
+                success: function (data) {
+                    var Dados = "";
+                    if(data != "")
+                    {
+                        Retorno = data.split('|')
+                        Dados = "<label>Tamanho</label><br>"
+                        for (var i = 0; i < Retorno.length; i++) {
+
+                            var split = Retorno[i].split("^")
+
+                            Dados = Dados + "<label>" + split[1] + ": </label>"
+                            Dados = Dados + "<input type='checkbox' name='ckTamanho' value='" + split[0] + "'onclick='AtualizaBusca(888)'>&nbsp&nbsp&nbsp&nbsp"
+                        }
+
+                        document.getElementById("Tamanho").innerHTML = Dados;
+                    }
+                    else
+                    {
+                        document.getElementById("Tamanho").innerHTML = "";
+                    }
+                    $.ajax({
+                        url: '@Url.Action("CarregaSubVariacao", "Gerenciamento")',
+                        data: { Tipo:TipoProdutoTxt},
+                        success: function (data) {
+                            var Dados = "";
+                      
+                            if(data != "")
+                            {
+                                Retorno = data.split('|')
+                                Dados = "<label>Sub Variacao</label><br>"
+                                for (var i = 0; i < Retorno.length; i++) {
+
+                                    var split = Retorno[i].split("^")
+
+                                    Dados = Dados + "<label>" + split[1] + ": </label>"
+                                    Dados = Dados + "<input type='checkbox' name='ckSubVariacao' value='" + split[0] + "' onclick='AtualizaBusca(888)'>&nbsp&nbsp&nbsp&nbsp"
+                                }
+
+                                document.getElementById("Subvariacao").innerHTML = Dados;
+                            }
+                            else
+                            {
+                                document.getElementById("Subvariacao").innerHTML =""
+                            }
+                            $.ajax({
+                                url: '@Url.Action("CarregaVariacao", "Gerenciamento")',
+                                data: { Tipo:TipoProdutoTxt},
+                                success: function (data) {
+                                    var Dados = "";
+                                   
+                                    if(data != "")
+                                    {
+                                        Retorno = data.split('|')
+                                        Dados = "<label>Variacao</label><br>"
+                                        for (var i = 0; i < Retorno.length; i++) {
+
+                                            var split = Retorno[i].split("^")
+
+                                            Dados = Dados + "<label>" + split[1] + ": </label>"
+                                            Dados = Dados + "<input type='checkbox' name='ckVariacao' value='" + split[0] + "' onclick='AtualizaBusca(888)'>&nbsp&nbsp&nbsp&nbsp"
+                                        }
+
+                                        document.getElementById("Variacao").innerHTML = Dados;
+                                    }
+                                    else
+                                    {
+                                        document.getElementById("Variacao").innerHTML = "";
+                                    }
+                                }});
+                        }});
+                }});
+        }
+       
+        $.ajax({
+            url: '@Url.Action("AtualizaBusca", "Gerenciamento")',
+            data: { Dados: BuscaNome, Tipo:TipoProduto, Status : Status, Variacao:Variacao,Tamanhos:Tamanhos, SubVariacao:SubVariacao },
+            success: function (data) {
+              
+                if (data != "")
+                {
+                    Ret = data.split('||')
+                    var tabela = "<label id='Qnt'>Resultado da busca de Produto ("+Ret.length+")</label><br><br><table style='margin-top: -5px; border-radius: 5px 5px 5px 5px; border: solid 1px #000; height: auto; width: 445px;'>";
+                    for (var i = 0;i< Ret.length; i++)
+                    {
+                        Dados = Ret[i].split('^')
+
+                        tabela = tabela + "<tr style='border-bottom: 1px  solid #000;'>";
+                        tabela = tabela + "<th style='border-bottom: 1px  solid #000;'>";
+                        tabela = tabela + "<div class='saborvalor' style='width: 100%; margin-top: 5px;'>";
+                        tabela = tabela + "<input type='Radio' value='Editar' name='Editar' id='AtualizaCard' onclick='AlterarItemCardp ("+Dados[0]+")'>"
+                        tabela = tabela + ""+Dados[1]+"..................................."+Dados[2]+"";
+                        tabela = tabela + "</div><br>"
+                        tabela = tabela + "<div class='Ingredientes' style='text-align: left;'>"+Dados[3]+"<br><br></div>";
+                        tabela = tabela + "</th>";
+                        tabela = tabela + "</tr>";
+                   
+                    }
+                    tabela = tabela + "</table>";
+                    $("html, body").animate({ scrollTop: "200px" }, 1000);
+
+                    document.getElementById("SubCardapio").innerHTML=tabela;
+                }
+                else
+                {
+                    var tabela = "<label id='Qnt'>Resultado da busca de Produto (0)</label><br><br><table style='margin-top: -5px; border-radius: 5px 5px 5px 5px; border: solid 1px #000; height: auto; width: 445px;'>";
+                
+                    tabela = tabela + "<tr style='border-bottom: 1px  solid #000;'>";
+                    tabela = tabela + "<th style='border-bottom: 1px  solid #000;'>";
+
+                    tabela = tabela + "<div class='Ingredientes' style='text-align: left;'>Nenhum Registro Encontrado</div>";
+                    tabela = tabela + "</th>";
+                    tabela = tabela + "</tr>";
+                   
+                    tabela = tabela + "</table>";
+            
+                    document.getElementById("SubCardapio").innerHTML=tabela;
+                }
+            }
+        });
+        document.getElementById("ListaDetalheCardp").style.display = "none"
+        return;
+    }
+    
+    function Alteracadastro ()
+    {
+        var Sabor = document.getElementById("Sabor").value;
+        var Ingredientes = document.getElementById("Ingredientes").value;
+        var Valor = document.getElementById("Valor").value;
+        var Status = document.getElementById("Status").checked;
+        var Promocao = document.getElementById("Promocao").checked;
+        var IDPrd = document.getElementById("id").value;
+        var NovoValor = document.getElementById("NovoValor").value;
+        
+        var t = document.getElementById("TipoProduto").selectedIndex;
+        var ty = document.getElementById("TipoProduto").options;
+
+        var Tipo = ty[t].value;
+
+        
+        if((Sabor ==null ) && (Sabor =="" ) && (Ingredientes ==null ) && (Ingredientes =="" ) && (Valor ==null ) && (Valor =="" )
+           && (IDPrd ==null ) && (IDPrd =="" ) (Tipo ==null ) && (Tipo =="" ) && (NovoValor ==null ) && (NovoValor =="" ))
+        {
+            alert("Preencha todos os campos.")
+        }
+
+        if (Valor == "0,00")
+        {
+            alert("Colocar um valor para o produto")
+            return
+        }
+
+        $.ajax({
+            url: '@Url.Action("AtualizarCadastroProduto", "Gerenciamento")',
+            data: { IdProduto: IDPrd,Promocao: Promocao, Status:Status, variacoes : "",
+                Tamanho:"", Tipo:Tipo,Valor:Valor,
+                Ingredientes:Ingredientes,Sabor:Sabor,SubVariacao:"", NovoValor:NovoValor
+            },
+            success: function (data) {
+              
+
+            }});
+
+        document.getElementById("Sabor").value = ""
+        document.getElementById("Ingredientes").value = "";
+        document.getElementById("Valor").value = "";
+        document.getElementById("Status").checked;
+        document.getElementById("Promocao").checked;
+        document.getElementById("id").value = "";
+        document.getElementById("NovoValor").value = "";
+        document.getElementById("LbNovoValor").style.display = "none"
+        document.getElementById("NovoValor").style.display = "none"
+
+        AtualizaBusca(9)
+    }
+
+    function formatarmoeda(campo, tecla) {
+
+        var charCode = (tecla.which) ? tecla.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+
+        var separador_milhar = "."
+        var separador_decimal = ","
+        var sep = 0;
+        var key = '';
+        var i = j = 0;
+        var len = len2 = 0;
+        var strCheck = '0123456789';
+        var aux = aux2 = '';
+        var whichCode = (window.Event) ? tecla.which : tecla.keyCode;
+
+        if (whichCode == 13) return true; // Tecla Enter
+        if (whichCode == 8) return true; // Tecla Delete
+        key = String.fromCharCode(whichCode); // Pegando o valor digitado
+        if (strCheck.indexOf(key) == -1) return false; // Valor inválido (não inteiro)
+        len = campo.value.length;
+        for (i = 0; i < len; i++)
+            if ((campo.value.charAt(i) != '0') && (campo.value.charAt(i) != separador_decimal)) break;
+        aux = '';
+        for (; i < len; i++)
+            if (strCheck.indexOf(campo.value.charAt(i)) != -1) aux += campo.value.charAt(i);
+        aux += key;
+        len = aux.length;
+        if (len == 0) campo.value = '';
+        if (len == 1) campo.value = '0' + separador_decimal + '0' + aux;
+        if (len == 2) campo.value = '0' + separador_decimal + aux;
+
+        if (len > 2) {
+            aux2 = '';
+
+            for (j = 0, i = len - 3; i >= 0; i--) {
+                if (j == 3) {
+                    aux2 += separador_milhar;
+                    j = 0;
+                }
+                aux2 += aux.charAt(i);
+                j++;
+            }
+
+            campo.value = '';
+            len2 = aux2.length;
+            for (i = len2 - 1; i >= 0; i--)
+                campo.value += aux2.charAt(i);
+            campo.value += separador_decimal + aux.substr(len - 2, len);
+        }
+
+        return false;
+
+    }
+
+    function MostraValorCampo()
+    {
+        if (document.getElementById('Promocao').checked)
+        {
+            document.getElementById("LbNovoValor").style.display="block"
+            document.getElementById("NovoValor").style.display = "block"
+        }
+        else
+        {
+            document.getElementById("LbNovoValor").style.display="none"
+            document.getElementById("NovoValor").style.display = "none"
+        }
+    }
+</script>
+
+@ViewBag.ret
+

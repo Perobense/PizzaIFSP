@@ -1,0 +1,66 @@
+﻿
+/***********************************************************Relatorio*********************************************************************************/
+.DetalhePedido {
+    display:none;
+    width: 500px;
+    margin-left: 810px;
+
+    height: 500px;
+    background:#F9EECF;
+    border:1px dotted black;
+}
+table#Pedido tr:nth-child(even) {
+    background-color:#fff;
+        color: #000
+}
+
+table#Pedido tr:nth-child(odd) {
+    background-color:#fff;
+        color: #000
+}
+
+table#Pedido tr#LineWhite {
+    background-color:#fff;
+
+}
+table#Pedido tr#LineGreen {
+    background-color:#09ce23;
+
+}
+
+table#Pedido tr#LineRed {
+    background-color:#fc1c1c;
+
+}
+table#Pedido th {
+    background-color: #fff;
+    color: black;
+}
+.table#Pedido {
+width:30%;
+}
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+
+
+.mostrapedido {
+
+}
+.tabela {
+margin-top:150px;
+width:55%
+}
+.principal {
+}
+/***********************************************************Fim - Relatorio*********************************************************************************/
